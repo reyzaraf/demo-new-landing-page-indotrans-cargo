@@ -1,0 +1,1842 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panduan Lengkap Impor Barang dari China – Indotrans Cargo</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --blue: #0d3c8f;
+        --blue-light: #1a55c4;
+        --blue-dark: #082d6e;
+        --orange: #f57c00;
+        --orange-hover: #e65100;
+        --white: #ffffff;
+        --black: #1a1a1a;
+        --gray: #f5f7fa;
+        --gray-text: #666;
+        --border: #e0e6f0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Roboto", sans-serif;
+        color: var(--black);
+        background: var(--white);
+        overflow-x: hidden;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-family: "Outfit", sans-serif;
+      }
+
+      /* ===== NAVBAR ===== */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 4px 24px rgba(13, 60, 143, 0.1);
+      }
+      .nav-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 70px;
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .nav-logo-icon {
+        width: 42px;
+        height: 42px;
+        background: var(--blue);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .nav-logo-icon i {
+        color: var(--orange);
+        font-size: 20px;
+      }
+      .nav-logo-text .brand {
+        font-family: "Outfit", sans-serif;
+        font-weight: 800;
+        font-size: 17px;
+        color: var(--blue);
+      }
+      .nav-logo-text .sub {
+        font-size: 11px;
+        color: var(--orange);
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        list-style: none;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--black);
+        font-weight: 500;
+        font-size: 14.5px;
+        padding: 8px 14px;
+        border-radius: 8px;
+        transition: all 0.2s;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--blue);
+        background: #eaf0fc;
+      }
+      .dropdown {
+        position: relative;
+      }
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        min-width: 240px;
+        padding: 8px;
+        z-index: 100;
+      }
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+      .dropdown-menu a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 8px;
+        font-size: 14px;
+      }
+      .dropdown-menu a i {
+        color: var(--orange);
+        width: 18px;
+      }
+      .dropdown-menu a:hover {
+        background: var(--gray);
+      }
+      .btn-nav-cta {
+        background: var(--orange) !important;
+        color: var(--white) !important;
+        padding: 10px 20px !important;
+        border-radius: 30px !important;
+        font-weight: 700 !important;
+        font-size: 14px !important;
+      }
+      .btn-nav-cta:hover {
+        background: var(--orange-hover) !important;
+      }
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 4px;
+      }
+      .hamburger span {
+        display: block;
+        width: 25px;
+        height: 2.5px;
+        background: var(--black);
+        border-radius: 2px;
+        transition: all 0.3s;
+      }
+      @media (max-width: 900px) {
+        .hamburger {
+          display: flex;
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 70px;
+          left: 0;
+          right: 0;
+          background: var(--white);
+          flex-direction: column;
+          padding: 16px 24px 24px;
+          border-bottom: 1px solid var(--border);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+          gap: 4px;
+        }
+        .nav-links.open {
+          display: flex;
+        }
+        .nav-links li {
+          width: 100%;
+        }
+        .nav-links a {
+          display: block;
+          width: 100%;
+        }
+        .dropdown-menu {
+          position: static;
+          box-shadow: none;
+          border: none;
+          background: var(--gray);
+          margin-top: 4px;
+          display: none;
+        }
+        .dropdown.open .dropdown-menu {
+          display: block;
+        }
+      }
+
+      /* ===== READ PROGRESS ===== */
+      .read-progress {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        height: 3px;
+        background: rgba(0, 0, 0, 0.06);
+      }
+      .read-progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, var(--orange), #ffb74d);
+        width: 0%;
+        transition: width 0.1s;
+      }
+
+      /* ===== ARTICLE HERO ===== */
+      .article-hero {
+        background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+        padding: 110px 0 0;
+        position: relative;
+        overflow: hidden;
+      }
+      .article-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=1400&q=70");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.12;
+      }
+      .hero-meta-wrap {
+        position: relative;
+        z-index: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 50px 24px 0;
+      }
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+      .breadcrumb a {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        font-size: 13px;
+        transition: color 0.2s;
+      }
+      .breadcrumb a:hover {
+        color: #ffa726;
+      }
+      .breadcrumb .sep {
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 13px;
+      }
+      .breadcrumb .current {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 13px;
+      }
+      .article-cat-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--orange);
+        color: var(--white);
+        font-size: 12px;
+        font-weight: 700;
+        padding: 5px 14px;
+        border-radius: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 18px;
+      }
+      .article-hero h1 {
+        font-size: clamp(24px, 3.5vw, 40px);
+        color: var(--white);
+        font-weight: 800;
+        line-height: 1.3;
+        margin-bottom: 20px;
+      }
+      .article-hero-meta {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        padding-bottom: 40px;
+      }
+      .hero-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 13px;
+      }
+      .hero-meta-item i {
+        color: #ffa726;
+        font-size: 11px;
+      }
+      .hero-meta-item strong {
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 600;
+      }
+      .hero-cover {
+        position: relative;
+        z-index: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .hero-cover img {
+        width: 100%;
+        height: 380px;
+        object-fit: cover;
+        border-radius: 20px 20px 0 0;
+        display: block;
+      }
+      @media (max-width: 640px) {
+        .hero-cover img {
+          height: 220px;
+        }
+      }
+
+      /* ===== MAIN LAYOUT ===== */
+      .article-main {
+        background: var(--gray);
+        padding: 0 0 80px;
+      }
+      .article-layout {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 32px;
+        align-items: start;
+      }
+      @media (max-width: 1024px) {
+        .article-layout {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          position: static !important;
+        }
+      }
+
+      /* ===== ARTICLE CARD WRAP ===== */
+      .article-content-wrap {
+        background: var(--white);
+        border-radius: 0 0 20px 20px;
+        border: 1.5px solid var(--border);
+        border-top: none;
+        padding: 40px 44px 40px;
+        max-width: 860px;
+      }
+      @media (max-width: 640px) {
+        .article-content-wrap {
+          padding: 24px 20px;
+        }
+      }
+
+      /* ===== SHARE BAR ===== */
+      .share-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding-bottom: 24px;
+        border-bottom: 1.5px solid var(--border);
+        margin-bottom: 36px;
+      }
+      .share-label {
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--black);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .share-label i {
+        color: var(--orange);
+      }
+      .share-btns {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .share-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+        transition: all 0.2s;
+      }
+      .share-wa {
+        background: #e8f5e9;
+        color: #2e7d32;
+      }
+      .share-wa:hover {
+        background: #25d366;
+        color: white;
+      }
+      .share-fb {
+        background: #e8eaf6;
+        color: #1565c0;
+      }
+      .share-fb:hover {
+        background: #1877f2;
+        color: white;
+      }
+      .share-copy {
+        background: var(--gray);
+        color: var(--gray-text);
+        border: 1.5px solid var(--border) !important;
+      }
+      .share-copy:hover {
+        background: var(--blue);
+        color: white;
+        border-color: var(--blue) !important;
+      }
+
+      /* ===== WYSIWYG CONTENT STYLES ===== */
+      /* Ini adalah styling untuk semua output HTML dari Summernote/WYSIWYG */
+      .wysiwyg-content {
+        font-size: 16px;
+        line-height: 1.85;
+        color: #333;
+      }
+
+      /* Paragraf */
+      .wysiwyg-content p {
+        margin-bottom: 20px;
+      }
+
+      /* Headings */
+      .wysiwyg-content h1,
+      .wysiwyg-content h2,
+      .wysiwyg-content h3,
+      .wysiwyg-content h4,
+      .wysiwyg-content h5,
+      .wysiwyg-content h6 {
+        font-family: "Outfit", sans-serif;
+        color: var(--black);
+        line-height: 1.3;
+        margin-top: 36px;
+        margin-bottom: 14px;
+      }
+      .wysiwyg-content h1 {
+        font-size: 28px;
+        font-weight: 800;
+      }
+      .wysiwyg-content h2 {
+        font-size: 22px;
+        font-weight: 800;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--border);
+      }
+      .wysiwyg-content h3 {
+        font-size: 18px;
+        font-weight: 700;
+      }
+      .wysiwyg-content h4 {
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      /* Bold, italic, underline */
+      .wysiwyg-content strong,
+      .wysiwyg-content b {
+        font-weight: 700;
+        color: var(--black);
+      }
+      .wysiwyg-content em,
+      .wysiwyg-content i {
+        font-style: italic;
+      }
+      .wysiwyg-content u {
+        text-decoration: underline;
+      }
+      .wysiwyg-content s,
+      .wysiwyg-content strike {
+        text-decoration: line-through;
+        color: var(--gray-text);
+      }
+
+      /* Links */
+      .wysiwyg-content a {
+        color: var(--blue);
+        text-decoration: underline;
+        transition: color 0.2s;
+      }
+      .wysiwyg-content a:hover {
+        color: var(--orange);
+      }
+
+      /* Lists */
+      .wysiwyg-content ul,
+      .wysiwyg-content ol {
+        padding-left: 26px;
+        margin-bottom: 20px;
+      }
+      .wysiwyg-content ul {
+        list-style: disc;
+      }
+      .wysiwyg-content ol {
+        list-style: decimal;
+      }
+      .wysiwyg-content li {
+        margin-bottom: 8px;
+        line-height: 1.7;
+      }
+      .wysiwyg-content ul ul,
+      .wysiwyg-content ol ol,
+      .wysiwyg-content ul ol,
+      .wysiwyg-content ol ul {
+        margin-top: 6px;
+        margin-bottom: 0;
+      }
+
+      /* Blockquote */
+      .wysiwyg-content blockquote {
+        border-left: 4px solid var(--orange);
+        background: #fff8f0;
+        padding: 16px 20px;
+        margin: 24px 0;
+        border-radius: 0 10px 10px 0;
+        font-style: italic;
+        color: #555;
+        font-size: 15.5px;
+        line-height: 1.7;
+      }
+      .wysiwyg-content blockquote p {
+        margin: 0;
+      }
+
+      /* Images */
+      .wysiwyg-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        display: block;
+        margin: 24px auto;
+        border: 1.5px solid var(--border);
+      }
+
+      /* Tables */
+      .wysiwyg-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 24px 0;
+        font-size: 14.5px;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1.5px solid var(--border);
+      }
+      .wysiwyg-content table th {
+        background: var(--blue);
+        color: var(--white);
+        font-family: "Outfit", sans-serif;
+        font-weight: 700;
+        padding: 12px 16px;
+        text-align: left;
+        font-size: 14px;
+      }
+      .wysiwyg-content table td {
+        padding: 11px 16px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+      }
+      .wysiwyg-content table tr:last-child td {
+        border-bottom: none;
+      }
+      .wysiwyg-content table tr:nth-child(even) td {
+        background: var(--gray);
+      }
+
+      /* Horizontal rule */
+      .wysiwyg-content hr {
+        border: none;
+        border-top: 2px solid var(--border);
+        margin: 32px 0;
+      }
+
+      /* Code inline */
+      .wysiwyg-content code {
+        background: #f0f0f0;
+        padding: 2px 7px;
+        border-radius: 5px;
+        font-size: 13.5px;
+        font-family: "Courier New", monospace;
+        color: #c0392b;
+      }
+
+      /* Code block (pre) */
+      .wysiwyg-content pre {
+        background: #1e1e2e;
+        color: #cdd6f4;
+        padding: 20px 24px;
+        border-radius: 12px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.65;
+        margin: 24px 0;
+      }
+      .wysiwyg-content pre code {
+        background: none;
+        color: inherit;
+        padding: 0;
+        font-size: inherit;
+      }
+
+      /* Text alignment (Summernote output) */
+      .wysiwyg-content .text-center,
+      .wysiwyg-content [style*="text-align: center"],
+      .wysiwyg-content [style*="text-align:center"] {
+        text-align: center;
+      }
+      .wysiwyg-content .text-right,
+      .wysiwyg-content [style*="text-align: right"],
+      .wysiwyg-content [style*="text-align:right"] {
+        text-align: right;
+      }
+      .wysiwyg-content .text-justify,
+      .wysiwyg-content [style*="text-align: justify"] {
+        text-align: justify;
+      }
+
+      /* First paragraph lead style */
+      .wysiwyg-content > p:first-child {
+        font-size: 17px;
+        color: #444;
+        line-height: 1.85;
+      }
+
+      /* ===== ARTICLE TAGS ===== */
+      .article-tags {
+        margin-top: 36px;
+        padding-top: 24px;
+        border-top: 1.5px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .article-tags .label {
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--black);
+        white-space: nowrap;
+      }
+      .tag-pill {
+        padding: 5px 14px;
+        border-radius: 20px;
+        background: var(--gray);
+        border: 1.5px solid var(--border);
+        color: var(--gray-text);
+        font-size: 13px;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .tag-pill:hover {
+        background: var(--blue);
+        border-color: var(--blue);
+        color: var(--white);
+      }
+
+      /* ===== AUTHOR BOX ===== */
+      .author-box {
+        margin-top: 32px;
+        background: linear-gradient(135deg, #f5f7fa, #eaf0fc);
+        border: 1.5px solid var(--border);
+        border-radius: 18px;
+        padding: 22px;
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+      }
+      .author-avatar {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--blue), var(--blue-light));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Outfit", sans-serif;
+        font-weight: 800;
+        font-size: 20px;
+        color: var(--white);
+        flex-shrink: 0;
+      }
+      .author-info h4 {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 3px;
+      }
+      .author-info .role {
+        font-size: 12px;
+        color: var(--orange);
+        font-weight: 600;
+        margin-bottom: 7px;
+      }
+      .author-info p {
+        font-size: 13.5px;
+        color: var(--gray-text);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* ===== RELATED ARTICLES ===== */
+      .related-section {
+        background: var(--white);
+        border-radius: 20px;
+        border: 1.5px solid var(--border);
+        padding: 28px;
+        margin-top: 24px;
+        max-width: 860px;
+      }
+      .related-section h3 {
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--black);
+        margin-bottom: 18px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .related-section h3 i {
+        color: var(--orange);
+      }
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      .related-card {
+        border: 1.5px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s;
+        display: flex;
+        flex-direction: column;
+      }
+      .related-card:hover {
+        box-shadow: 0 8px 28px rgba(13, 60, 143, 0.11);
+        transform: translateY(-3px);
+        border-color: var(--blue-light);
+      }
+      .related-img {
+        width: 100%;
+        height: 130px;
+        background-size: cover;
+        background-position: center;
+      }
+      .related-body {
+        padding: 14px 16px;
+        flex: 1;
+      }
+      .related-body .cat {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--orange);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 5px;
+      }
+      .related-body h4 {
+        font-size: 13.5px;
+        font-weight: 700;
+        color: var(--black);
+        line-height: 1.4;
+        margin-bottom: 7px;
+      }
+      .related-body span {
+        font-size: 11.5px;
+        color: var(--gray-text);
+      }
+      .related-body span i {
+        color: var(--blue);
+        font-size: 10px;
+        margin-right: 3px;
+      }
+      @media (max-width: 480px) {
+        .related-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ===== SIDEBAR ===== */
+      .sidebar {
+        position: sticky;
+        top: 90px;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+      }
+      .sidebar-card {
+        background: var(--white);
+        border-radius: 18px;
+        border: 1.5px solid var(--border);
+        padding: 22px;
+      }
+      .sidebar-card h3 {
+        font-family: "Outfit", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .sidebar-card h3 i {
+        color: var(--orange);
+      }
+
+      /* Article info */
+      .article-info-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .article-info-list li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13.5px;
+        color: var(--gray-text);
+      }
+      .article-info-list li i {
+        color: var(--blue);
+        width: 16px;
+        text-align: center;
+        font-size: 13px;
+      }
+      .article-info-list li strong {
+        color: var(--black);
+        font-weight: 600;
+      }
+
+      /* Popular posts */
+      .popular-item {
+        display: flex;
+        gap: 10px;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--border);
+        text-decoration: none;
+        color: inherit;
+      }
+      .popular-item:last-child {
+        border: none;
+        padding-bottom: 0;
+      }
+      .popular-thumb {
+        width: 58px;
+        height: 58px;
+        border-radius: 8px;
+        flex-shrink: 0;
+        background-size: cover;
+        background-position: center;
+      }
+      .popular-info h4 {
+        font-size: 12.5px;
+        font-weight: 600;
+        color: var(--black);
+        line-height: 1.4;
+        margin-bottom: 4px;
+        transition: color 0.2s;
+      }
+      .popular-item:hover h4 {
+        color: var(--blue);
+      }
+      .popular-info span {
+        font-size: 11px;
+        color: var(--gray-text);
+      }
+      .popular-info span i {
+        color: var(--orange);
+        font-size: 10px;
+        margin-right: 3px;
+      }
+
+      /* Sidebar CTA */
+      .sidebar-cta {
+        background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+        border-radius: 18px;
+        padding: 24px;
+        text-align: center;
+      }
+      .sidebar-cta h3 {
+        color: var(--white);
+        font-size: 15px;
+        margin-bottom: 8px;
+      }
+      .sidebar-cta p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.6;
+        margin-bottom: 18px;
+      }
+      .btn-cta-full {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--orange);
+        color: var(--white);
+        padding: 12px 18px;
+        border-radius: 30px;
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+      .btn-cta-full:hover {
+        background: var(--orange-hover);
+        transform: scale(1.02);
+      }
+
+      /* Tags cloud */
+      .tag-cloud {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+      .tag {
+        padding: 5px 13px;
+        border-radius: 20px;
+        border: 1.5px solid var(--border);
+        font-size: 12px;
+        color: var(--gray-text);
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .tag:hover {
+        background: var(--blue);
+        border-color: var(--blue);
+        color: var(--white);
+      }
+
+      /* ===== WA FLOAT ===== */
+      .wa-float {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+      }
+      .wa-label {
+        background: var(--white);
+        color: #25d366;
+        font-weight: 600;
+        font-size: 13.5px;
+        padding: 10px 16px;
+        border-radius: 30px 0 0 30px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        white-space: nowrap;
+        max-width: 0;
+        overflow: hidden;
+        transition:
+          max-width 0.4s ease,
+          padding 0.3s;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .wa-float:hover .wa-label {
+        max-width: 220px;
+        padding-left: 16px;
+        padding-right: 12px;
+      }
+      .wa-btn {
+        width: 58px;
+        height: 58px;
+        background: #25d366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+        transition: all 0.3s;
+        position: relative;
+        z-index: 1;
+      }
+      .wa-btn i {
+        color: var(--white);
+        font-size: 26px;
+      }
+      .wa-btn:hover {
+        transform: scale(1.1);
+      }
+      .wa-pulse {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background: rgba(37, 211, 102, 0.35);
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 0.8;
+        }
+        100% {
+          transform: scale(1.7);
+          opacity: 0;
+        }
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        background: #050f1f;
+        color: rgba(255, 255, 255, 0.75);
+      }
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1.5fr;
+        gap: 48px;
+        padding: 60px 0 44px;
+      }
+      .footer-brand-name {
+        font-family: "Outfit", sans-serif;
+        font-weight: 800;
+        font-size: 17px;
+        color: #fff;
+      }
+      .footer-brand-sub {
+        font-size: 11px;
+        color: var(--orange);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      .footer-col h4 {
+        font-family: "Outfit", sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        color: #fff;
+        margin-bottom: 16px;
+      }
+      .footer-col ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .footer-col ul a {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        font-size: 13.5px;
+        transition: color 0.2s;
+      }
+      .footer-col ul a:hover {
+        color: var(--orange);
+      }
+      .footer-contact-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 11px;
+        font-size: 13.5px;
+      }
+      .footer-contact-row i {
+        color: var(--orange);
+        margin-top: 2px;
+        width: 16px;
+        font-size: 13px;
+      }
+      .footer-contact-row span {
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.5;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 22px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12.5px;
+        color: rgba(255, 255, 255, 0.35);
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      @media (max-width: 900px) {
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 28px;
+          padding: 44px 0 32px;
+        }
+      }
+      @media (max-width: 480px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-bottom {
+          justify-content: center;
+          text-align: center;
+        }
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- PROGRESS BAR -->
+    <div class="read-progress">
+      <div class="read-progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav>
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+          <div class="nav-logo-icon"><i class="fas fa-ship"></i></div>
+          <div class="nav-logo-text">
+            <div class="brand">Indotrans Cargo</div>
+            <div class="sub">Forwarder China–Indonesia</div>
+          </div>
+        </a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="index.html#tentang">Tentang Kami</a></li>
+          <li class="dropdown">
+            <a href="index.html#layanan"
+              >Layanan
+              <i
+                class="fas fa-chevron-down"
+                style="font-size: 10px; margin-left: 4px"
+              ></i
+            ></a>
+            <div class="dropdown-menu">
+              <a href="index.html#layanan"
+                ><i class="fas fa-ship"></i> Sea Freight (FCL & LCL)</a
+              >
+              <a href="index.html#layanan"
+                ><i class="fas fa-plane"></i> Air Freight</a
+              >
+              <a href="index.html#layanan"
+                ><i class="fas fa-yen-sign"></i> Transfer RMB</a
+              >
+              <a href="index.html#layanan"
+                ><i class="fas fa-shopping-bag"></i> Jasa Belanja</a
+              >
+              <a href="index.html#layanan"
+                ><i class="fas fa-truck"></i> Trucking</a
+              >
+              <a href="index.html#layanan"
+                ><i class="fas fa-warehouse"></i> Warehousing</a
+              >
+            </div>
+          </li>
+          <li><a href="blog.html" class="active">Blog</a></li>
+          <li>
+            <a
+              href="https://wa.me/628XXXXXXXXX?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
+              target="_blank"
+              class="btn-nav-cta"
+              ><i class="fab fa-whatsapp"></i> Hubungi Kami</a
+            >
+          </li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ARTICLE HERO -->
+    <div class="article-hero">
+      <div class="hero-meta-wrap">
+        <div class="breadcrumb">
+          <a href="index.html"><i class="fas fa-home"></i> Beranda</a>
+          <span class="sep">/</span>
+          <a href="blog.html">Blog</a>
+          <span class="sep">/</span>
+          <span class="current">Panduan Impor dari China</span>
+        </div>
+        <div class="article-cat-badge">
+          <i class="fas fa-tag"></i> Tips Impor
+        </div>
+        <h1>Panduan Lengkap Impor Barang dari China untuk Pemula di 2025</h1>
+        <div class="article-hero-meta">
+          <div class="hero-meta-item">
+            <i class="fas fa-user-circle"></i>
+            <strong>Tim Indotrans Cargo</strong>
+          </div>
+          <div class="hero-meta-item">
+            <i class="fas fa-calendar-alt"></i> 20 Maret 2025
+          </div>
+          <div class="hero-meta-item">
+            <i class="fas fa-clock"></i> 8 menit baca
+          </div>
+          <div class="hero-meta-item">
+            <i class="fas fa-eye"></i> 4.287 views
+          </div>
+        </div>
+      </div>
+      <div class="hero-cover">
+        <img
+          src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=1200&q=80"
+          alt="Impor barang dari China"
+        />
+      </div>
+    </div>
+
+    <!-- ARTICLE MAIN -->
+    <div class="article-main">
+      <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px">
+        <div class="article-layout">
+          <!-- CONTENT -->
+          <div>
+            <div class="article-content-wrap reveal">
+              <!-- Share Bar -->
+              <div class="share-bar">
+                <div class="share-label">
+                  <i class="fas fa-share-alt"></i> Bagikan Artikel
+                </div>
+                <div class="share-btns">
+                  <a href="#" class="share-btn share-wa"
+                    ><i class="fab fa-whatsapp"></i> WhatsApp</a
+                  >
+                  <a href="#" class="share-btn share-fb"
+                    ><i class="fab fa-facebook-f"></i> Facebook</a
+                  >
+                  <button class="share-btn share-copy" onclick="copyLink()">
+                    <i class="fas fa-link"></i> Salin Link
+                  </button>
+                </div>
+              </div>
+
+              <!-- ============================================================
+               WYSIWYG CONTENT AREA
+               Konten di bawah ini adalah contoh output dari Summernote.
+               Di implementasi nyata, isi div.wysiwyg-content cukup diisi
+               dengan {{ $artikel->konten }} atau echo $artikel['konten'].
+               Semua tag HTML standar (p, h2, h3, ul, ol, blockquote,
+               table, img, strong, em, dll) sudah di-style otomatis.
+          ============================================================ -->
+              <div class="wysiwyg-content" id="articleBody">
+                <p>
+                  Impor barang dari China semakin diminati oleh para pelaku
+                  bisnis di Indonesia — mulai dari pedagang online, reseller,
+                  hingga pemilik toko offline. Harga yang kompetitif dan pilihan
+                  produk yang sangat beragam membuat China menjadi sumber barang
+                  nomor satu bagi banyak importir Indonesia.
+                </p>
+
+                <p>
+                  Namun bagi pemula, proses impor seringkali terasa
+                  membingungkan. Ada banyak istilah baru, regulasi bea cukai,
+                  dan prosedur logistik yang perlu dipahami. Artikel ini akan
+                  memandu Anda dari awal hingga akhir.
+                </p>
+
+                <h2>1. Menentukan Produk yang Akan Diimpor</h2>
+
+                <p>
+                  Langkah pertama adalah memilih produk yang tepat. Tidak semua
+                  barang menguntungkan untuk diimpor karena ada biaya logistik,
+                  bea masuk, dan pajak yang perlu diperhitungkan.
+                </p>
+
+                <ul>
+                  <li>
+                    <strong>Riset pasar terlebih dahulu</strong> — pastikan ada
+                    permintaan yang cukup di Indonesia
+                  </li>
+                  <li>
+                    <strong>Perhatikan regulasi impor</strong> — beberapa produk
+                    memerlukan SNI, izin BPOM, atau Kementan
+                  </li>
+                  <li>
+                    <strong>Hitung total landed cost</strong> — harga produk +
+                    ongkos kirim + bea masuk + pajak
+                  </li>
+                </ul>
+
+                <h2>2. Mencari dan Memverifikasi Supplier</h2>
+
+                <p>
+                  Platform populer untuk mencari supplier China antara lain
+                  <strong>Alibaba.com</strong>, <strong>1688.com</strong>, dan
+                  <strong>Made-in-China.com</strong>. Berikut tips memverifikasi
+                  supplier:
+                </p>
+
+                <ol>
+                  <li>
+                    Periksa status verifikasi — pilih yang berlabel
+                    <em>Gold Supplier</em> atau <em>Verified Supplier</em>
+                  </li>
+                  <li>Minta sampel produk sebelum order dalam jumlah besar</li>
+                  <li>Cek ulasan, rating, dan riwayat transaksi supplier</li>
+                  <li>
+                    Lakukan video call untuk melihat fasilitas produksi jika
+                    memungkinkan
+                  </li>
+                </ol>
+
+                <blockquote>
+                  <p>
+                    Anda tidak harus mengurus semuanya sendiri. Menggunakan jasa
+                    freight forwarder terpercaya bisa menghemat waktu, menekan
+                    risiko, dan memastikan barang tiba dengan aman.
+                  </p>
+                </blockquote>
+
+                <h2>3. Memilih Metode Pengiriman</h2>
+
+                <p>
+                  Ada dua pilihan utama pengiriman dari China ke Indonesia:
+                  <strong>Sea Freight</strong> (laut) dan
+                  <strong>Air Freight</strong> (udara). Perbandingannya:
+                </p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Aspek</th>
+                      <th>Sea Freight</th>
+                      <th>Air Freight</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Estimasi Waktu</td>
+                      <td>14–21 hari kerja</td>
+                      <td>5–7 hari kerja</td>
+                    </tr>
+                    <tr>
+                      <td>Biaya</td>
+                      <td>Lebih murah per kg/cbm</td>
+                      <td>Lebih mahal per kg</td>
+                    </tr>
+                    <tr>
+                      <td>Cocok untuk</td>
+                      <td>Barang berat/volume besar</td>
+                      <td>Barang ringan, urgency tinggi</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h2>4. Memahami Proses Bea Cukai</h2>
+
+                <p>
+                  Proses bea cukai adalah bagian paling krusial. Beberapa
+                  dokumen yang diperlukan:
+                </p>
+
+                <ul>
+                  <li><strong>Invoice & Packing List</strong> dari supplier</li>
+                  <li>
+                    <strong>Bill of Lading (B/L)</strong> atau
+                    <strong>Airway Bill (AWB)</strong>
+                  </li>
+                  <li>
+                    <strong>Pemberitahuan Impor Barang (PIB)</strong> untuk Bea
+                    Cukai Indonesia
+                  </li>
+                  <li>
+                    <strong>HS Code</strong> — kode klasifikasi barang yang
+                    menentukan tarif bea masuk
+                  </li>
+                </ul>
+
+                <h2>5. Menggunakan Jasa Freight Forwarder</h2>
+
+                <p>
+                  Indotrans Cargo menangani seluruh proses dari pembelian,
+                  pengiriman, customs clearance, hingga pengantaran ke gudang
+                  Anda. Tim support kami berbahasa Mandarin sehingga komunikasi
+                  dengan supplier lebih mudah dan efektif.
+                </p>
+
+                <p>
+                  Dengan pengalaman lebih dari <strong>5 tahun</strong> dan
+                  sudah melayani <strong>500+ importir</strong> di seluruh
+                  Indonesia, Indotrans Cargo siap menjadi mitra impor terpercaya
+                  Anda.
+                </p>
+              </div>
+              <!-- END WYSIWYG CONTENT AREA -->
+
+              <!-- Tags -->
+              <div class="article-tags">
+                <span class="label"
+                  ><i class="fas fa-tags" style="color: var(--orange)"></i>
+                  Tag:</span
+                >
+                <a href="#" class="tag-pill">Impor China</a>
+                <a href="#" class="tag-pill">Bea Cukai</a>
+                <a href="#" class="tag-pill">Freight Forwarder</a>
+                <a href="#" class="tag-pill">Sea Freight</a>
+                <a href="#" class="tag-pill">Panduan Impor</a>
+              </div>
+
+              <!-- Author Box -->
+              <div class="author-box">
+                <div class="author-avatar">IT</div>
+                <div class="author-info">
+                  <h4>Tim Indotrans Cargo</h4>
+                  <div class="role">Tim Editorial & Konsultan Impor</div>
+                  <p>
+                    Praktisi berpengalaman di bidang freight forwarding, customs
+                    clearance, dan logistik internasional dengan pengalaman
+                    lebih dari 5 tahun melayani importir Indonesia.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Related Articles -->
+            <div class="related-section reveal">
+              <h3><i class="fas fa-newspaper"></i> Artikel Terkait</h3>
+              <div class="related-grid">
+                <a href="blog-detail.html" class="related-card">
+                  <div
+                    class="related-img"
+                    style="
+                      background-image: url(&quot;https://images.unsplash.com/photo-1578575436955-ef29da568c6d?w=600&q=70&quot;);
+                    "
+                  ></div>
+                  <div class="related-body">
+                    <div class="cat">Sea Freight</div>
+                    <h4>Perbedaan FCL dan LCL dalam Pengiriman Laut</h4>
+                    <span><i class="fas fa-calendar"></i> 14 Mar 2025</span>
+                  </div>
+                </a>
+                <a href="blog-detail.html" class="related-card">
+                  <div
+                    class="related-img"
+                    style="
+                      background-image: url(&quot;https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=70&quot;);
+                    "
+                  ></div>
+                  <div class="related-body">
+                    <div class="cat">Bea Cukai</div>
+                    <h4>5 Kesalahan Umum saat Urus Bea Cukai Impor</h4>
+                    <span><i class="fas fa-calendar"></i> 8 Mar 2025</span>
+                  </div>
+                </a>
+                <a href="blog-detail.html" class="related-card">
+                  <div
+                    class="related-img"
+                    style="
+                      background-image: url(&quot;https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&q=70&quot;);
+                    "
+                  ></div>
+                  <div class="related-body">
+                    <div class="cat">Bisnis</div>
+                    <h4>Cara Temukan Supplier Terpercaya di Alibaba</h4>
+                    <span><i class="fas fa-calendar"></i> 22 Feb 2025</span>
+                  </div>
+                </a>
+                <a href="blog-detail.html" class="related-card">
+                  <div
+                    class="related-img"
+                    style="
+                      background-image: url(&quot;https://images.unsplash.com/photo-1464582883107-8adf2dca8a9f?w=600&q=70&quot;);
+                    "
+                  ></div>
+                  <div class="related-body">
+                    <div class="cat">Air Freight</div>
+                    <h4>Kapan Harus Pilih Air Freight vs Sea Freight?</h4>
+                    <span><i class="fas fa-calendar"></i> 1 Mar 2025</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- SIDEBAR -->
+          <aside class="sidebar" style="padding-top: 50px">
+            <!-- CTA -->
+            <div class="sidebar-cta reveal">
+              <h3>
+                <i
+                  class="fas fa-headset"
+                  style="color: #ffa726; margin-right: 6px"
+                ></i
+                >Siap Mulai Impor?
+              </h3>
+              <p>Konsultasikan kebutuhan impor Anda dengan tim kami. Gratis!</p>
+              <a
+                href="https://wa.me/628XXXXXXXXX?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
+                target="_blank"
+                class="btn-cta-full"
+              >
+                <i class="fab fa-whatsapp"></i> Konsultasi Gratis
+              </a>
+            </div>
+
+            <!-- Popular Posts -->
+            <div class="sidebar-card reveal">
+              <h3><i class="fas fa-fire"></i> Artikel Populer</h3>
+              <a href="blog-detail.html" class="popular-item">
+                <div
+                  class="popular-thumb"
+                  style="
+                    background-image: url(&quot;https://images.unsplash.com/photo-1578575436955-ef29da568c6d?w=200&q=60&quot;);
+                  "
+                ></div>
+                <div class="popular-info">
+                  <h4>Perbedaan FCL dan LCL dalam Pengiriman Laut</h4>
+                  <span><i class="fas fa-eye"></i> 3.1k views</span>
+                </div>
+              </a>
+              <a href="blog-detail.html" class="popular-item">
+                <div
+                  class="popular-thumb"
+                  style="
+                    background-image: url(&quot;https://images.unsplash.com/photo-1557804506-669a67965ba0?w=200&q=60&quot;);
+                  "
+                ></div>
+                <div class="popular-info">
+                  <h4>Cara Temukan Supplier Terpercaya di Alibaba</h4>
+                  <span><i class="fas fa-eye"></i> 2.8k views</span>
+                </div>
+              </a>
+              <a href="blog-detail.html" class="popular-item">
+                <div
+                  class="popular-thumb"
+                  style="
+                    background-image: url(&quot;https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=200&q=60&quot;);
+                  "
+                ></div>
+                <div class="popular-info">
+                  <h4>5 Kesalahan Umum saat Urus Bea Cukai</h4>
+                  <span><i class="fas fa-eye"></i> 2.4k views</span>
+                </div>
+              </a>
+            </div>
+
+            <!-- Tags -->
+            <div class="sidebar-card reveal">
+              <h3><i class="fas fa-tags"></i> Tag Populer</h3>
+              <div class="tag-cloud">
+                <a href="#" class="tag">Impor China</a>
+                <a href="#" class="tag">Bea Cukai</a>
+                <a href="#" class="tag">Forwarder</a>
+                <a href="#" class="tag">Sea Freight</a>
+                <a href="#" class="tag">FCL LCL</a>
+                <a href="#" class="tag">1688</a>
+                <a href="#" class="tag">Alibaba</a>
+                <a href="#" class="tag">RMB</a>
+              </div>
+            </div>
+
+            <!-- Share Sidebar -->
+            <div class="sidebar-card reveal">
+              <h3><i class="fas fa-share-alt"></i> Bagikan</h3>
+              <div style="display: flex; flex-direction: column; gap: 8px">
+                <a
+                  href="#"
+                  class="share-btn share-wa"
+                  style="justify-content: center; padding: 10px 16px"
+                  ><i class="fab fa-whatsapp"></i> Bagikan ke WhatsApp</a
+                >
+                <a
+                  href="#"
+                  class="share-btn share-fb"
+                  style="justify-content: center; padding: 10px 16px"
+                  ><i class="fab fa-facebook-f"></i> Bagikan ke Facebook</a
+                >
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 14px;
+              "
+            >
+              <div
+                style="
+                  width: 42px;
+                  height: 42px;
+                  background: var(--blue);
+                  border-radius: 10px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <i
+                  class="fas fa-ship"
+                  style="color: var(--orange); font-size: 19px"
+                ></i>
+              </div>
+              <div>
+                <div class="footer-brand-name">Indotrans Cargo</div>
+                <div class="footer-brand-sub">Forwarder China–Indonesia</div>
+              </div>
+            </div>
+            <p
+              style="font-size: 13.5px; line-height: 1.75; margin-bottom: 18px"
+            >
+              Mitra terpercaya importir Indonesia selama 5+ tahun.
+            </p>
+            <div style="display: flex; gap: 9px">
+              <a
+                href="#"
+                style="
+                  width: 34px;
+                  height: 34px;
+                  background: rgba(255, 255, 255, 0.08);
+                  border-radius: 7px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: rgba(255, 255, 255, 0.65);
+                  text-decoration: none;
+                  font-size: 13px;
+                "
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                style="
+                  width: 34px;
+                  height: 34px;
+                  background: rgba(255, 255, 255, 0.08);
+                  border-radius: 7px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: rgba(255, 255, 255, 0.65);
+                  text-decoration: none;
+                  font-size: 13px;
+                "
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="#"
+                style="
+                  width: 34px;
+                  height: 34px;
+                  background: rgba(255, 255, 255, 0.08);
+                  border-radius: 7px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: rgba(255, 255, 255, 0.65);
+                  text-decoration: none;
+                  font-size: 13px;
+                "
+                ><i class="fab fa-tiktok"></i
+              ></a>
+              <a
+                href="https://wa.me/628XXXXXXXXX"
+                target="_blank"
+                style="
+                  width: 34px;
+                  height: 34px;
+                  background: rgba(255, 255, 255, 0.08);
+                  border-radius: 7px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: rgba(255, 255, 255, 0.65);
+                  text-decoration: none;
+                  font-size: 13px;
+                "
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Navigasi</h4>
+            <ul>
+              <li><a href="index.html">Beranda</a></li>
+              <li><a href="index.html#tentang">Tentang Kami</a></li>
+              <li><a href="index.html#layanan">Layanan</a></li>
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Layanan</h4>
+            <ul>
+              <li><a href="#">Sea Freight</a></li>
+              <li><a href="#">Air Freight</a></li>
+              <li><a href="#">Transfer RMB</a></li>
+              <li><a href="#">Jasa Belanja</a></li>
+              <li><a href="#">Trucking</a></li>
+              <li><a href="#">Warehousing</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Kontak</h4>
+            <div class="footer-contact-row">
+              <i class="fas fa-map-marker-alt"></i
+              ><span>Jakarta, Indonesia</span>
+            </div>
+            <div class="footer-contact-row">
+              <i class="fab fa-whatsapp"></i><span>+62 8XX-XXXX-XXXX</span>
+            </div>
+            <div class="footer-contact-row">
+              <i class="fas fa-envelope"></i
+              ><span>info@indotranscargo.com</span>
+            </div>
+            <div class="footer-contact-row">
+              <i class="fas fa-clock"></i
+              ><span>Senin–Sabtu, 08.00–18.00 WIB</span>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2025 Indotrans Jaya Nusantara. All rights reserved.</span>
+          <span>Forwarder Import China–Indonesia Terpercaya</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WA FLOAT -->
+    <div class="wa-float">
+      <span class="wa-label">Konsultasi Impor Gratis</span>
+      <a
+        class="wa-btn"
+        href="https://wa.me/628XXXXXXXXX?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
+        target="_blank"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <div class="wa-pulse"></div>
+    </div>
+
+    <script>
+      // Hamburger
+      document.getElementById("hamburger").addEventListener("click", () => {
+        document.getElementById("navLinks").classList.toggle("open");
+      });
+      document.querySelectorAll(".dropdown > a").forEach((a) => {
+        a.addEventListener("click", function (e) {
+          if (window.innerWidth <= 900) {
+            e.preventDefault();
+            this.parentElement.classList.toggle("open");
+          }
+        });
+      });
+
+      // Reading progress bar
+      window.addEventListener("scroll", () => {
+        const body = document.getElementById("articleBody");
+        if (!body) return;
+        const docH = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = window.scrollY;
+        document.getElementById("progressBar").style.width =
+          Math.min((scrolled / docH) * 100, 100) + "%";
+      });
+
+      // Copy link
+      function copyLink() {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          const btn = document.querySelector(".share-copy");
+          btn.innerHTML = '<i class="fas fa-check"></i> Tersalin!';
+          setTimeout(() => {
+            btn.innerHTML = '<i class="fas fa-link"></i> Salin Link';
+          }, 2000);
+        });
+      }
+
+      // Scroll reveal
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.08 },
+      );
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

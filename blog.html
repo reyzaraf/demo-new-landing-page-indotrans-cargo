@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog – Indotrans Cargo | Tips & Info Impor China Indonesia</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --blue: #0d3c8f;
+      --blue-light: #1a55c4;
+      --blue-dark: #082d6e;
+      --orange: #f57c00;
+      --orange-hover: #e65100;
+      --white: #ffffff;
+      --black: #1a1a1a;
+      --gray: #f5f7fa;
+      --gray-text: #666;
+      --border: #e0e6f0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: var(--black);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 4px 24px rgba(13, 60, 143, 0.10);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--blue);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo-icon i {
+      color: var(--orange);
+      font-size: 20px;
+    }
+
+    .nav-logo-text .brand {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 17px;
+      color: var(--blue);
+    }
+
+    .nav-logo-text .sub {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--black);
+      font-weight: 500;
+      font-size: 14.5px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--blue);
+      background: #eaf0fc;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+      min-width: 240px;
+      padding: 8px;
+      z-index: 100;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .dropdown-menu a i {
+      color: var(--orange);
+      width: 18px;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--gray);
+    }
+
+    .btn-nav-cta {
+      background: var(--orange) !important;
+      color: var(--white) !important;
+      padding: 10px 20px !important;
+      border-radius: 30px !important;
+      font-weight: 700 !important;
+      font-size: 14px !important;
+    }
+
+    .btn-nav-cta:hover {
+      background: var(--orange-hover) !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 2.5px;
+      background: var(--black);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    @media (max-width: 900px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        flex-direction: column;
+        padding: 16px 24px 24px;
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        gap: 4px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .nav-links a {
+        display: block;
+        width: 100%;
+      }
+
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        background: var(--gray);
+        margin-top: 4px;
+        display: none;
+      }
+
+      .dropdown.open .dropdown-menu {
+        display: block;
+      }
+    }
+
+    /* ===== PAGE HERO ===== */
+    .page-hero {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 70%, var(--blue-light) 100%);
+      padding: 120px 0 70px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1400&q=70');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+    }
+
+    .page-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .breadcrumb a {
+      color: rgba(255, 255, 255, 0.65);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb a:hover {
+      color: #ffa726;
+    }
+
+    .breadcrumb span {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 13px;
+    }
+
+    .breadcrumb .current {
+      color: #ffa726;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(28px, 4vw, 48px);
+      color: var(--white);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .page-hero p {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 540px;
+      line-height: 1.7;
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== BLOG LAYOUT ===== */
+    .blog-section {
+      padding: 70px 0 90px;
+      background: var(--gray);
+    }
+
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* ===== FILTER BAR ===== */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-tab {
+      padding: 8px 18px;
+      border-radius: 30px;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      color: var(--gray-text);
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-tab:hover,
+    .filter-tab.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: var(--white);
+    }
+
+    .filter-count {
+      font-size: 13px;
+      color: var(--gray-text);
+    }
+
+    .filter-count span {
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    /* ===== FEATURED CARD ===== */
+    .featured-card {
+      background: var(--white);
+      border-radius: 24px;
+      border: 1.5px solid var(--border);
+      overflow: hidden;
+      margin-bottom: 28px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      transition: all 0.3s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .featured-card:hover {
+      box-shadow: 0 16px 48px rgba(13, 60, 143, 0.14);
+      transform: translateY(-4px);
+    }
+
+    .featured-img {
+      height: 100%;
+      min-height: 280px;
+      background-image: url('https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=800&q=80');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .featured-body {
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .article-cat {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .article-cat i {
+      font-size: 11px;
+    }
+
+    .featured-body h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1.35;
+      margin-bottom: 12px;
+    }
+
+    .featured-body p {
+      font-size: 14px;
+      color: var(--gray-text);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12.5px;
+      color: var(--gray-text);
+    }
+
+    .meta-item i {
+      color: var(--blue);
+      font-size: 11px;
+    }
+
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--orange);
+      font-weight: 700;
+      font-size: 14px;
+      margin-top: 18px;
+      transition: gap 0.2s;
+    }
+
+    .featured-card:hover .read-more {
+      gap: 10px;
+    }
+
+    /* ===== ARTICLE GRID ===== */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .article-card {
+      background: var(--white);
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-card:hover {
+      box-shadow: 0 12px 40px rgba(13, 60, 143, 0.12);
+      transform: translateY(-5px);
+      border-color: var(--blue-light);
+    }
+
+    .article-img {
+      width: 100%;
+      height: 190px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+    }
+
+    .article-img .cat-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 1;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .article-body {
+      padding: 22px 22px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-body h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .article-body p {
+      font-size: 13.5px;
+      color: var(--gray-text);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 16px;
+    }
+
+    .article-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    .article-date {
+      font-size: 12px;
+      color: var(--gray-text);
+    }
+
+    .article-date i {
+      color: var(--orange);
+      margin-right: 4px;
+    }
+
+    .article-arrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #eaf0fc;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+
+    .article-card:hover .article-arrow {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    /* ===== PAGINATION ===== */
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 44px;
+    }
+
+    .page-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      color: var(--black);
+      font-weight: 600;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .page-btn:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    .page-btn.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: var(--white);
+    }
+
+    .page-btn.arrow {
+      color: var(--gray-text);
+      font-size: 12px;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      position: sticky;
+      top: 90px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .sidebar-card {
+      background: var(--white);
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      padding: 24px;
+    }
+
+    .sidebar-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sidebar-card h3 i {
+      color: var(--orange);
+    }
+
+    /* Search */
+    .search-wrap {
+      position: relative;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      padding: 12px 16px 12px 42px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-wrap input:focus {
+      border-color: var(--blue);
+    }
+
+    .search-wrap i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray-text);
+      font-size: 14px;
+    }
+
+    .search-btn {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .search-btn:hover {
+      background: var(--orange-hover);
+    }
+
+    /* Categories */
+    .cat-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .cat-list li a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--black);
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .cat-list li a:hover {
+      background: #eaf0fc;
+      color: var(--blue);
+    }
+
+    .cat-list li a .cat-count {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--white);
+      background: var(--blue);
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+
+    /* Popular Posts */
+    .popular-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .popular-item:last-child {
+      border: none;
+      padding-bottom: 0;
+    }
+
+    .popular-thumb {
+      width: 64px;
+      height: 64px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .popular-info h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.4;
+      margin-bottom: 5px;
+      transition: color 0.2s;
+    }
+
+    .popular-item:hover h4 {
+      color: var(--blue);
+    }
+
+    .popular-info span {
+      font-size: 11.5px;
+      color: var(--gray-text);
+    }
+
+    .popular-info span i {
+      color: var(--orange);
+      font-size: 10px;
+      margin-right: 3px;
+    }
+
+    /* Tags */
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      font-size: 12.5px;
+      color: var(--gray-text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .tag:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: var(--white);
+    }
+
+    /* CTA Sidebar */
+    .sidebar-cta {
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+      border: none;
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .sidebar-cta h3 {
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .sidebar-cta p {
+      font-size: 13.5px;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .btn-cta-full {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--orange);
+      color: var(--white);
+      padding: 13px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .btn-cta-full:hover {
+      background: var(--orange-hover);
+      transform: scale(1.03);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .blog-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .featured-card {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-img {
+        min-height: 200px;
+      }
+
+      .articles-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== WA FLOAT ===== */
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+    }
+
+    .wa-label {
+      background: var(--white);
+      color: #25D366;
+      font-weight: 600;
+      font-size: 13.5px;
+      padding: 10px 16px;
+      border-radius: 30px 0 0 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+      white-space: nowrap;
+      max-width: 0;
+      overflow: hidden;
+      transition: max-width 0.4s ease, padding 0.3s;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .wa-float:hover .wa-label {
+      max-width: 240px;
+      padding-left: 16px;
+      padding-right: 12px;
+    }
+
+    .wa-btn {
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+      transition: all 0.3s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .wa-btn i {
+      color: var(--white);
+      font-size: 28px;
+    }
+
+    .wa-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .wa-pulse {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(37, 211, 102, 0.4);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: scale(1.7);
+        opacity: 0;
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: all 0.5s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon"><i class="fas fa-ship"></i></div>
+        <div class="nav-logo-text">
+          <div class="brand">Indotrans Cargo</div>
+          <div class="sub">Forwarder China–Indonesia</div>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="index.html#tentang">Tentang Kami</a></li>
+        <li class="dropdown">
+          <a href="index.html#layanan">Layanan <i class="fas fa-chevron-down"
+              style="font-size:10px;margin-left:4px"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html#layanan"><i class="fas fa-ship"></i> Sea Freight (FCL & LCL)</a>
+            <a href="index.html#layanan"><i class="fas fa-plane"></i> Air Freight</a>
+            <a href="index.html#layanan"><i class="fas fa-yen-sign"></i> Transfer RMB</a>
+            <a href="index.html#layanan"><i class="fas fa-shopping-bag"></i> Jasa Belanja</a>
+            <a href="index.html#layanan"><i class="fas fa-truck"></i> Trucking</a>
+            <a href="index.html#layanan"><i class="fas fa-warehouse"></i> Warehousing</a>
+          </div>
+        </li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a
+            href="https://wa.me/628XXXXXXXXX?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
+            target="_blank" class="btn-nav-cta"><i class="fab fa-whatsapp"></i> Hubungi Kami</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        <a href="index.html"><i class="fas fa-home"></i> Beranda</a>
+        <span>/</span>
+        <span class="current">Blog</span>
+      </div>
+      <h1>Blog & Tips Impor</h1>
+      <p>Panduan lengkap, tips impor China, info bea cukai, dan update terbaru seputar freight forwarder.</p>
+    </div>
+  </div>
+
+  <!-- BLOG SECTION -->
+  <section class="blog-section">
+    <div class="container">
+      <div class="blog-layout">
+
+        <!-- MAIN CONTENT -->
+        <div>
+          <!-- Filter Bar -->
+          <div class="filter-bar reveal">
+            <div class="filter-tabs">
+              <button class="filter-tab active">Semua</button>
+              <button class="filter-tab">Tips Impor</button>
+              <button class="filter-tab">Bea Cukai</button>
+              <button class="filter-tab">Sea Freight</button>
+              <button class="filter-tab">Air Freight</button>
+              <button class="filter-tab">Bisnis</button>
+            </div>
+            <div class="filter-count">Menampilkan <span>12</span> artikel</div>
+          </div>
+
+          <!-- Featured Article -->
+          <a href="blog-detail-v2.html" class="featured-card reveal">
+            <div class="featured-img">
+              <span class="featured-badge"><i class="fas fa-fire" style="margin-right:4px"></i> Featured</span>
+            </div>
+            <div class="featured-body">
+              <div class="article-cat"><i class="fas fa-tag"></i> Tips Impor</div>
+              <h2>Panduan Lengkap Impor Barang dari China untuk Pemula di 2025</h2>
+              <p>Mulai dari memilih supplier yang tepat, menghitung biaya impor, hingga proses customs clearance — semua
+                dijelaskan langkah demi langkah.</p>
+              <div class="article-meta">
+                <div class="meta-item"><i class="fas fa-user"></i> Tim Indotrans</div>
+                <div class="meta-item"><i class="fas fa-calendar"></i> 20 Mar 2025</div>
+                <div class="meta-item"><i class="fas fa-clock"></i> 8 menit baca</div>
+              </div>
+              <div class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></div>
+            </div>
+          </a>
+
+          <!-- Articles Grid -->
+          <div class="articles-grid">
+            <a href="blog-detail-v2.html" class="article-card reveal">
+              <div class="article-img"
+                style="background-image:url('https://images.unsplash.com/photo-1578575436955-ef29da568c6d?w=600&q=70')">
+                <span class="cat-badge">Sea Freight</span>
+              </div>
+              <div class="article-body">
+                <h3>Perbedaan FCL dan LCL dalam Pengiriman Laut yang Harus Kamu Tahu</h3>
+                <p>Pilih kontainer penuh atau gabung dengan pengirim lain? Pahami perbedaan, kelebihan, dan hitung mana
+                  yang lebih hemat untuk bisnismu.</p>
+                <div class="article-footer">
+                  <span class="article-date"><i class="fas fa-calendar"></i> 14 Mar 2025</span>
+                  <div class="article-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+              </div>
+            </a>
+
+            <a href="blog-detail-v2.html" class="article-card reveal">
+              <div class="article-img"
+                style="background-image:url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=70')">
+                <span class="cat-badge">Bea Cukai</span>
+              </div>
+              <div class="article-body">
+                <h3>5 Kesalahan Umum saat Urus Bea Cukai Impor dan Cara Menghindarinya</h3>
+                <p>Barang tertahan di pabean? Kenali kesalahan-kesalahan fatal yang sering dilakukan importir pemula dan
+                  solusi praktisnya.</p>
+                <div class="article-footer">
+                  <span class="article-date"><i class="fas fa-calendar"></i> 8 Mar 2025</span>
+                  <div class="article-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+              </div>
+            </a>
+
+            <a href="blog-detail-v2.html" class="article-card reveal">
+              <div class="article-img"
+                style="background-image:url('https://images.unsplash.com/photo-1464582883107-8adf2dca8a9f?w=600&q=70')">
+                <span class="cat-badge">Air Freight</span>
+              </div>
+              <div class="article-body">
+                <h3>Kapan Harus Pilih Air Freight vs Sea Freight? Ini Kalkulasinya</h3>
+                <p>Tidak selalu mahal, Air Freight bisa lebih hemat tergantung jenis dan berat barang. Simak perhitungan
+                  praktis di sini.</p>
+                <div class="article-footer">
+                  <span class="article-date"><i class="fas fa-calendar"></i> 1 Mar 2025</span>
+                  <div class="article-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+              </div>
+            </a>
+
+            <a href="blog-detail-v2.html" class="article-card reveal">
+              <div class="article-img"
+                style="background-image:url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&q=70')">
+                <span class="cat-badge">Bisnis</span>
+              </div>
+              <div class="article-body">
+                <h3>Cara Temukan Supplier Terpercaya di Alibaba dan 1688 untuk Bisnis Impor</h3>
+                <p>Tips verifikasi supplier, minta sampel, negosiasi harga, dan hindari penipuan saat belanja dari
+                  marketplace China.</p>
+                <div class="article-footer">
+                  <span class="article-date"><i class="fas fa-calendar"></i> 22 Feb 2025</span>
+                  <div class="article-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+              </div>
+            </a>
+
+            <a href="blog-detail-v2.html" class="article-card reveal">
+              <div class="article-img"
+                style="background-image:url('https://images.unsplash.com/photo-1565793979848-5f4d10bf1d1f?w=600&q=70')">
+                <span class="cat-badge">Tips Impor</span>
+              </div>
+              <div class="article-body">
+                <h3>Transfer RMB ke Supplier China: Cara Aman & Terpercaya</h3>
+                <p>Panduan lengkap cara bayar supplier China dengan RMB, termasuk tips menghindari risiko penipuan dan
+                  selisih kurs.</p>
+                <div class="article-footer">
+                  <span class="article-date"><i class="fas fa-calendar"></i> 15 Feb 2025</span>
+                  <div class="article-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+              </div>
+            </a>
+
+            <a href="blog-detail-v2.html" class="article-card reveal">
+              <div class="article-img"
+                style="background-image:url('https://images.unsplash.com/photo-1601597110591-97b5dd5041b0?w=600&q=70')">
+                <span class="cat-badge">Bea Cukai</span>
+              </div>
+              <div class="article-body">
+                <h3>Update Peraturan Bea Cukai 2025: Yang Perlu Diketahui Importir</h3>
+                <p>Pemerintah memperbarui ketentuan impor barang kiriman. Simak perubahan tarif, batasan nilai, dan
+                  dokumen yang diperlukan.</p>
+                <div class="article-footer">
+                  <span class="article-date"><i class="fas fa-calendar"></i> 5 Feb 2025</span>
+                  <div class="article-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination reveal">
+            <a href="#" class="page-btn arrow"><i class="fas fa-chevron-left"></i></a>
+            <a href="#" class="page-btn active">1</a>
+            <a href="#" class="page-btn">2</a>
+            <a href="#" class="page-btn">3</a>
+            <span style="color:var(--gray-text);font-size:14px;padding:0 4px">...</span>
+            <a href="#" class="page-btn">8</a>
+            <a href="#" class="page-btn arrow"><i class="fas fa-chevron-right"></i></a>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+          <div class="sidebar-card reveal">
+            <h3><i class="fas fa-search"></i> Cari Artikel</h3>
+            <div class="search-wrap">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="Kata kunci artikel..." />
+              <button class="search-btn">Cari</button>
+            </div>
+          </div>
+
+          <div class="sidebar-card reveal">
+            <h3><i class="fas fa-folder"></i> Kategori</h3>
+            <ul class="cat-list">
+              <li><a href="#">Tips Impor <span class="cat-count">14</span></a></li>
+              <li><a href="#">Bea Cukai <span class="cat-count">9</span></a></li>
+              <li><a href="#">Sea Freight <span class="cat-count">11</span></a></li>
+              <li><a href="#">Air Freight <span class="cat-count">7</span></a></li>
+              <li><a href="#">Transfer RMB <span class="cat-count">5</span></a></li>
+              <li><a href="#">Bisnis & Supplier <span class="cat-count">8</span></a></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-card reveal">
+            <h3><i class="fas fa-fire"></i> Artikel Populer</h3>
+            <a href="blog-detail-v2.html" class="popular-item">
+              <div class="popular-thumb"
+                style="background-image:url('https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=200&q=60')">
+              </div>
+              <div class="popular-info">
+                <h4>Panduan Lengkap Impor Barang dari China untuk Pemula</h4>
+                <span><i class="fas fa-eye"></i> 4.2k views</span>
+              </div>
+            </a>
+            <a href="blog-detail-v2.html" class="popular-item">
+              <div class="popular-thumb"
+                style="background-image:url('https://images.unsplash.com/photo-1578575436955-ef29da568c6d?w=200&q=60')">
+              </div>
+              <div class="popular-info">
+                <h4>Perbedaan FCL dan LCL dalam Pengiriman Laut</h4>
+                <span><i class="fas fa-eye"></i> 3.1k views</span>
+              </div>
+            </a>
+            <a href="blog-detail-v2.html" class="popular-item">
+              <div class="popular-thumb"
+                style="background-image:url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=200&q=60')">
+              </div>
+              <div class="popular-info">
+                <h4>Cara Temukan Supplier Terpercaya di Alibaba</h4>
+                <span><i class="fas fa-eye"></i> 2.8k views</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="sidebar-cta reveal">
+            <h3><i class="fas fa-headset" style="color:#ffa726;margin-right:8px"></i>Butuh Konsultasi?</h3>
+            <p>Tim kami siap bantu proses impor Anda dari China ke Indonesia.</p>
+            <a href="https://wa.me/628XXXXXXXXX?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
+              target="_blank" class="btn-cta-full">
+              <i class="fab fa-whatsapp"></i> Chat Sekarang
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#050f1f;color:rgba(255,255,255,0.75)">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:48px;padding:70px 0 50px">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+            <div
+              style="width:44px;height:44px;background:var(--blue);border-radius:10px;display:flex;align-items:center;justify-content:center">
+              <i class="fas fa-ship" style="color:var(--orange);font-size:20px"></i></div>
+            <div>
+              <div style="font-family:Outfit,sans-serif;font-weight:800;font-size:18px;color:#fff">Indotrans Cargo</div>
+              <div
+                style="font-size:11px;color:var(--orange);letter-spacing:1px;text-transform:uppercase;font-weight:600">
+                Forwarder China–Indonesia</div>
+            </div>
+          </div>
+          <p style="font-size:14px;line-height:1.75;margin-bottom:20px">Mitra terpercaya importir Indonesia selama 5+
+            tahun.</p>
+          <div style="display:flex;gap:10px">
+            <a href="#"
+              style="width:36px;height:36px;background:rgba(255,255,255,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.7);text-decoration:none"><i
+                class="fab fa-instagram"></i></a>
+            <a href="#"
+              style="width:36px;height:36px;background:rgba(255,255,255,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.7);text-decoration:none"><i
+                class="fab fa-facebook-f"></i></a>
+            <a href="#"
+              style="width:36px;height:36px;background:rgba(255,255,255,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.7);text-decoration:none"><i
+                class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 style="font-family:Outfit,sans-serif;font-weight:700;font-size:15px;color:#fff;margin-bottom:18px">
+            Navigasi</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+            <li><a href="index.html"
+                style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px">Beranda</a></li>
+            <li><a href="index.html#tentang"
+                style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px">Tentang Kami</a></li>
+            <li><a href="index.html#layanan"
+                style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px">Layanan</a></li>
+            <li><a href="blog.html" style="color:var(--orange);text-decoration:none;font-size:14px">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-family:Outfit,sans-serif;font-weight:700;font-size:15px;color:#fff;margin-bottom:18px">Layanan
+          </h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+            <li><a href="#" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px">Sea Freight</a>
+            </li>
+            <li><a href="#" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px">Air Freight</a>
+            </li>
+            <li><a href="#" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px">Transfer RMB</a>
+            </li>
+            <li><a href="#" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px">Jasa Belanja</a>
+            </li>
+            <li><a href="#" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px">Trucking</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-family:Outfit,sans-serif;font-weight:700;font-size:15px;color:#fff;margin-bottom:18px">Kontak
+          </h4>
+          <div style="display:flex;gap:10px;margin-bottom:12px;font-size:14px"><i class="fas fa-map-marker-alt"
+              style="color:var(--orange);margin-top:2px"></i><span style="color:rgba(255,255,255,0.65)">Jakarta,
+              Indonesia</span></div>
+          <div style="display:flex;gap:10px;margin-bottom:12px;font-size:14px"><i class="fab fa-whatsapp"
+              style="color:var(--orange);margin-top:2px"></i><span style="color:rgba(255,255,255,0.65)">+62
+              8XX-XXXX-XXXX</span></div>
+          <div style="display:flex;gap:10px;font-size:14px"><i class="fas fa-envelope"
+              style="color:var(--orange);margin-top:2px"></i><span
+              style="color:rgba(255,255,255,0.65)">info@indotranscargo.com</span></div>
+        </div>
+      </div>
+      <div
+        style="border-top:1px solid rgba(255,255,255,0.08);padding:24px 0;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:rgba(255,255,255,0.4);flex-wrap:wrap;gap:12px">
+        <span>© 2025 Indotrans Jaya Nusantara. All rights reserved.</span>
+        <span>Forwarder Import China–Indonesia Terpercaya</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WA FLOAT -->
+  <div class="wa-float">
+    <span class="wa-label">Konsultasi Impor Gratis</span>
+    <a class="wa-btn"
+      href="https://wa.me/628XXXXXXXXX?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
+      target="_blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <div class="wa-pulse"></div>
+  </div>
+
+  <script>
+    document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('open'); });
+    document.querySelectorAll('.dropdown > a').forEach(a => { a.addEventListener('click', function (e) { if (window.innerWidth <= 900) { e.preventDefault(); this.parentElement.classList.toggle('open'); } }); });
+    document.querySelectorAll('.filter-tab').forEach(btn => { btn.addEventListener('click', function () { document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active')); this.classList.add('active'); }); });
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+
+</html>
