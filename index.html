@@ -9,6 +9,7 @@
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap"
     rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="assets/favicon.png">
   <style>
     *,
     *::before,
@@ -21,7 +22,7 @@
     :root {
       --blue: #0d3c8f;
       --blue-light: #1a55c4;
-      --blue-dark: #082d6e;
+      --blue-dark: #1E5170;
       --orange: #FE914E;
       --orange-hover: #e65100;
       --white: #ffffff;
@@ -361,6 +362,11 @@
       border-radius: 50px;
       font-size: 1rem;
       padding: 12px 26px;
+      background: rgba(255, 255, 255, 0.2);
+      /* Semi-transparent */
+      backdrop-filter: blur(10px);
+      /* Blurs background behind button */
+      -webkit-backdrop-filter: blur(10px);
     }
 
     /* KANAN: stat cards */
@@ -426,7 +432,7 @@
     .stat-card .stat-label {
       font-size: 0.95rem;
       font-weight: 600;
-      color: #222;
+      color: #1E5170;
       line-height: 1.4;
     }
 
@@ -452,7 +458,7 @@
     @media (max-width: 768px) {
       .hero {
         height: auto;
-        min-height: 65svh;
+        min-height: 99svh;
         max-height: none;
         align-items: flex-start;
       }
@@ -464,10 +470,12 @@
 
       .hero-overlay {
         background: linear-gradient(180deg,
-            rgba(10, 90, 210, 0.92) 0%,
-            rgba(10, 90, 210, 0.84) 34%,
-            rgba(10, 90, 210, 0.42) 62%,
-            rgba(10, 90, 210, 0.10) 100%);
+            rgba(0, 111, 185, 0.95) 0%,
+            rgba(0, 111, 185, 0.78) 25%,
+            rgba(0, 111, 185, 0.50) 48%,
+            rgba(0, 111, 185, 0.10) 65%,
+            transparent 100%);
+        z-index: 1;
       }
 
       .hero-container {
@@ -506,11 +514,12 @@
         justify-content: center;
         font-size: 0.9rem;
         padding: 13px 16px;
+
       }
 
       .hero-right {
         width: 100%;
-        bottom: 10px;
+        top: 3vh;
       }
 
       .stats-cards {
@@ -616,7 +625,7 @@
     .section-title {
       font-size: clamp(24px, 3.5vw, 38px);
       font-weight: 800;
-      color: var(--black);
+      color: var(--blue-dark);
       line-height: 1.25;
       margin-bottom: 14px;
     }
@@ -707,7 +716,7 @@
     .why-card h3 {
       font-size: 17px;
       font-weight: 700;
-      color: var(--black);
+      color: var(--blue-dark);
       margin-bottom: 10px;
     }
 
@@ -777,7 +786,7 @@
     .layanan-card h3 {
       font-size: 18px;
       font-weight: 700;
-      color: var(--black);
+      color: var(--blue-dark);
       margin-bottom: 10px;
     }
 
@@ -961,9 +970,6 @@
       justify-content: center;
       min-width: 160px;
       height: 164px;
-      background: var(--gray);
-      border-radius: 12px;
-      border: 1px solid var(--border);
       padding: 0 20px;
       font-family: 'Outfit', sans-serif;
       font-weight: 700;
@@ -1057,6 +1063,11 @@
       margin-bottom: 8px;
       box-shadow: 0 8px 22px rgba(245, 124, 0, .30);
       flex-shrink: 0;
+    }
+
+    .cara-step-icon img {
+      width: 28px;
+      height: 28px;
     }
 
     .cara-step-icon i {
@@ -1190,7 +1201,7 @@
         order: 1;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px 10px;
+        gap: 30px 10px;
         width: 100%;
         padding: 0 4px 24px;
       }
@@ -1250,6 +1261,8 @@
         margin-bottom: 6px;
       }
 
+
+
       .cara-step-icon i {
         font-size: 18px;
       }
@@ -1268,7 +1281,26 @@
     @media (max-width: 480px) {
       .cara-steps-mobile {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px 10px;
+        gap: 30px 20px;
+        position: relative;
+      }
+
+      .cara-steps-mobile .cara-step {
+        position: relative;
+        z-index: 2;
+      }
+
+      .cara-mobile-connector {
+        display: block !important;
+        position: absolute;
+        top: -10px;
+        left: -8px;
+        width: calc(100% - 0px);
+        height: calc(100% - -57px);
+        z-index: 1;
+        pointer-events: none;
+        overflow: visible;
+        opacity: 1;
       }
 
       .cara-step-label {
@@ -1277,6 +1309,13 @@
 
       .cara-phone-device {
         width: min(92vw, 360px);
+      }
+    }
+
+    /* Hide mobile connector on desktop & tablet */
+    @media (min-width: 481px) {
+      .cara-mobile-connector {
+        display: none;
       }
     }
 
@@ -1324,7 +1363,7 @@
       cursor: pointer;
       font-weight: 600;
       font-size: 15px;
-      color: var(--black);
+      color: var(--blue-dark);
       gap: 12px;
     }
 
@@ -1739,7 +1778,10 @@
     .why-us-v4 .why-card-overlay-v4 {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0, 111, 185, .10) 0%, rgba(0, 111, 185, .58) 25%, rgba(0, 87, 146, 0.98) 75%);
+      background: linear-gradient(180deg,
+          rgba(0, 111, 185, .10) 0%,
+          rgba(0, 111, 185, .21) 25%,
+          rgba(0, 87, 146, 0.98) 95%);
       z-index: 1;
       transition: background 0.4s ease;
     }
@@ -1747,7 +1789,10 @@
     .why-us-v4 .why-card-v4:hover .why-card-overlay-v4,
     .why-us-v4 .why-card-v4:focus-within .why-card-overlay-v4,
     .why-us-v4 .why-card-v4.active .why-card-overlay-v4 {
-      background: linear-gradient(180deg, rgba(0, 111, 185, .10) 0%, rgba(0, 111, 185, .75) 15%, rgba(0, 87, 146, 0.98) 55%);
+      background: linear-gradient(180deg,
+          rgba(0, 111, 185, .10) 0%,
+          rgba(0, 111, 185, .75) 15%,
+          rgba(0, 87, 146, 0.98) 55%);
     }
 
     .why-us-v4 .why-content-v4 {
@@ -1856,7 +1901,7 @@
       }
 
       .why-swipe-hint span.active {
-        background: var(--blue);
+        background: var(--orange);
         width: 20px;
         border-radius: 4px;
       }
@@ -1864,7 +1909,7 @@
 
     /* Desktop: keep hint hidden */
     .why-swipe-hint {
-      display: none;
+      display: flex;
     }
 
 
@@ -1909,7 +1954,7 @@
       text-align: left;
       font-size: 17px;
       font-weight: 700;
-      color: var(--black);
+      color: var(--blue-dark);
       cursor: pointer;
     }
 
@@ -1989,7 +2034,10 @@
     .layanan-card-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, #006FB9 0%, #0065a8 10%, rgba(255, 255, 255, .15) 100%);
+      background: linear-gradient(to top,
+          #006FB9 0%,
+          #0065a8 10%,
+          rgba(255, 255, 255, .15) 100%);
       transition: background 0.4s ease;
     }
 
@@ -2076,7 +2124,7 @@
     }
 
     .testimoni .section-title {
-      color: var(--black) !important;
+      color: var(--blue-dark) !important;
     }
 
     .testimoni .section-sub {
@@ -2295,7 +2343,7 @@
 
     .cta-banner-title {
       font-family: Outfit, sans-serif;
-      font-size: clamp(32px, 4.2vw, 52px);
+      font-size: clamp(24px, 3.5vw, 38px);
       font-weight: 800;
       color: #ffffff;
       margin-bottom: 12px;
@@ -2308,7 +2356,7 @@
       color: rgba(255, 255, 255, 0.95);
       font-weight: 300;
       margin: 0 auto 36px;
-      max-width: 950px;
+      max-width: 620px;
       line-height: 1.35;
       text-shadow: 0 2px 14px rgba(0, 44, 88, 0.24);
     }
@@ -2330,9 +2378,6 @@
       transition: all 0.3s;
     }
 
-    .cta-banner-link i {
-      display: none;
-    }
 
     .cta-banner-link:hover {
       transform: translateY(-2px);
@@ -2366,7 +2411,7 @@
         </li>
         <li><a href="blog.html">Blog</a></li>
         <li><a
-            href="https://wa.me/628XXXXXXXXX?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
+            href="https://wa.me/6282269506267?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
             target="_blank" class="btn-nav-cta"><i class="fab fa-whatsapp"></i> Hubungi Kami</a></li>
       </ul>
       <div class="hamburger" id="hamburger">
@@ -2398,14 +2443,9 @@
           Indotrans Cargo menyediakan layanan import mulai dari pembelian, pembayaran, hingga pengiriman ke Indonesia.
         </p>
         <div class="hero-buttons">
-          <a href="https://wa.me/628XXXXXXXXX?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
+          <a href="https://wa.me/6282269506267?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
             target="_blank" class="btn-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-              <path
-                d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.14 1.545 5.875L.057 23.527a.5.5 0 0 0 .608.635l5.945-1.56A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.713 9.713 0 0 1-4.953-1.355l-.356-.21-3.681.965.982-3.585-.232-.369A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z" />
-            </svg>
+            <i class="fab fa-2x fa-whatsapp"></i>
             Hubungi Kami
           </a>
           <a href="#layanan" class="btn-secondary">Pilihan Layanan</a>
@@ -2637,14 +2677,86 @@
       </div>
       <div class="review-strip-wrap reveal">
         <div class="review-strip">
-          <div class="review-card" onclick="window.open('https://maps.app.goo.gl/dummy', '_blank')"
+          <div class="review-card" onclick="window.open('https://share.google/kyPPkBvvvhPtOE2zK', '_blank')"
+            style="cursor: pointer;">
+            <div class="review-top">
+              <div class="review-user">
+                <div class="review-avatar" style="background:#9cc3c9">AR</div>
+                <div>
+                  <div class="review-name">Arif RahmanYudiawan</div>
+                </div>
+              </div><svg width="16" height="16" viewBox="0 0 24 24">
+                <path fill="#4285F4"
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                <path fill="#34A853"
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                <path fill="#FBBC05"
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
+                <path fill="#EA4335"
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+              </svg>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">Perusahaan trucking dan forwarder terbaik, jenis mobilnya banyak dan lengkap,
+              mobilnya baru-baru, kualitasnya bagus banget, harganya juga oke, mampu memenuhi kebutuhan logistik anda
+              kemana saja, customernya banyak dari perusahaan-perusahaan terkenal, tidak perlu diragukan lagi tidak
+              mengecewakan, BEST BANGET POKOKNYA DAH</div>
+          </div>
+          <div class="review-card" onclick="window.open('https://share.google/kyPPkBvvvhPtOE2zK', '_blank')"
+            style="cursor: pointer;">
+            <div class="review-top">
+              <div class="review-user">
+                <div class="review-avatar" style="background:#4f83ff">MB</div>
+                <div>
+                  <div class="review-name">Mit Bush</div>
+                </div>
+              </div><svg width="16" height="16" viewBox="0 0 24 24">
+                <path fill="#4285F4"
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                <path fill="#34A853"
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                <path fill="#FBBC05"
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
+                <path fill="#EA4335"
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+              </svg>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">Used this company services many times. All working very well, no any unexpected
+              charges. Always delivered as discussed, on time.</div>
+          </div>
+          <div class="review-card" onclick="window.open('https://share.google/kyPPkBvvvhPtOE2zK', '_blank')"
+            style="cursor: pointer;">
+            <div class="review-top">
+              <div class="review-user">
+                <div class="review-avatar" style="background:#c9a44d">AS
+                </div>
+                <div>
+                  <div class="review-name">Arrafi Sutawijaya</div>
+                </div>
+              </div><svg width="16" height="16" viewBox="0 0 24 24">
+                <path fill="#4285F4"
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                <path fill="#34A853"
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                <path fill="#FBBC05"
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
+                <path fill="#EA4335"
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+              </svg>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">Awalnya sempat ada kendala dalam proses dokumen impor, tapi tim sangat responsif
+              dan sigap membantu sampai semua beres. Komunikasi terbuka dan transparan jadi saya merasa tenang selama
+              proses. Barang sampai dengan aman.</div>
+          </div>
+          <div class="review-card" onclick="window.open('https://share.google/kyPPkBvvvhPtOE2zK', '_blank')"
             style="cursor: pointer;">
             <div class="review-top">
               <div class="review-user">
                 <div class="review-avatar" style="background:#9cc3c9">S</div>
                 <div>
                   <div class="review-name">Sheila W</div>
-                  <div class="review-time">3 bulan lalu</div>
                 </div>
               </div><svg width="16" height="16" viewBox="0 0 24 24">
                 <path fill="#4285F4"
@@ -2660,23 +2772,14 @@
             <div class="review-stars">★★★★★</div>
             <div class="review-text">Great communication, concerns/questions answered in a timely manner and overall
               professionalism sangat baik. Reliable dan membantu selama proses impor.</div>
-            <div class="review-photos">
-              <div class="review-photo"
-                style="background-image:url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=200&q=70')">
-              </div>
-              <div class="review-photo"
-                style="background-image:url('https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=200&q=70')">
-              </div>
-            </div>
           </div>
-          <div class="review-card" onclick="window.open('https://maps.app.goo.gl/dummy', '_blank')"
+          <div class="review-card" onclick="window.open('https://share.google/kyPPkBvvvhPtOE2zK', '_blank')"
             style="cursor: pointer;">
             <div class="review-top">
               <div class="review-user">
-                <div class="review-avatar" style="background:#4f83ff">B</div>
+                <div class="review-avatar" style="background:#4f83ff">ZR</div>
                 <div>
-                  <div class="review-name">Budi Santoso</div>
-                  <div class="review-time">2 bulan lalu</div>
+                  <div class="review-name">Zeko Riyandi</div>
                 </div>
               </div><svg width="16" height="16" viewBox="0 0 24 24">
                 <path fill="#4285F4"
@@ -2690,17 +2793,17 @@
               </svg>
             </div>
             <div class="review-stars">★★★★★</div>
-            <div class="review-text">Layanan sangat memuaskan. Barang import dari China sampai tepat waktu dan aman.
-              Proses bea cukai dibantu dengan sangat profesional.</div>
+            <div class="review-text">Pelayanan sangat memuaskan. Proses impor dibantu dengan lancar dan transparan.
+              Barang sampai dengan aman, dan komunikasinya juga jelas. Recommended untuk urusan import.</div>
           </div>
-          <div class="review-card" onclick="window.open('https://maps.app.goo.gl/dummy', '_blank')"
+          <div class="review-card" onclick="window.open('https://share.google/kyPPkBvvvhPtOE2zK', '_blank')"
             style="cursor: pointer;">
             <div class="review-top">
               <div class="review-user">
-                <div class="review-avatar" style="background:#c9a44d">A</div>
+                <div class="review-avatar" style="background:#c9a44d">DIA</div>
                 <div>
-                  <div class="review-name">Anita Kusuma</div>
-                  <div class="review-time">1 bulan lalu</div>
+                  <div class="review-name">
+                    Deviana Isma Agustin</div>
                 </div>
               </div><svg width="16" height="16" viewBox="0 0 24 24">
                 <path fill="#4285F4"
@@ -2714,25 +2817,17 @@
               </svg>
             </div>
             <div class="review-stars">★★★★★</div>
-            <div class="review-text">Sudah beberapa kali impor lewat Indotrans dan hasilnya selalu memuaskan. Komunikasi
-              cepat dan tim support Mandarin sangat membantu.</div>
-            <div class="review-photos">
-              <div class="review-photo"
-                style="background-image:url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=200&q=70')">
-              </div>
-              <div class="review-photo"
-                style="background-image:url('https://images.unsplash.com/photo-1578575436955-ef29da568c6d?w=200&q=70')">
-              </div>
-            </div>
+            <div class="review-text">Sudah freight forwarding china to indonesia terpercaya ⭐️⭐️⭐️⭐️⭐️.</div>
           </div>
-          <div class="review-card" onclick="window.open('https://maps.app.goo.gl/dummy', '_blank')"
+          <div class="review-card" onclick="window.open('https://share.google/kyPPkBvvvhPtOE2zK', '_blank')"
             style="cursor: pointer;">
             <div class="review-top">
               <div class="review-user">
-                <div class="review-avatar" style="background:#9cc3c9">S</div>
+                <div class="review-avatar" style="background:#c9a44d">RL</div>
                 <div>
-                  <div class="review-name">Sheila W</div>
-                  <div class="review-time">3 bulan lalu</div>
+                  <div class="review-name">
+
+                    Regina Lee</div>
                 </div>
               </div><svg width="16" height="16" viewBox="0 0 24 24">
                 <path fill="#4285F4"
@@ -2746,25 +2841,17 @@
               </svg>
             </div>
             <div class="review-stars">★★★★★</div>
-            <div class="review-text">Great communication, concerns/questions answered in a timely manner and overall
-              professionalism sangat baik. Reliable dan membantu selama proses impor.</div>
-            <div class="review-photos">
-              <div class="review-photo"
-                style="background-image:url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=200&q=70')">
-              </div>
-              <div class="review-photo"
-                style="background-image:url('https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=200&q=70')">
-              </div>
-            </div>
+            <div class="review-text">CS sangat friendly dan cepat respons utk queries. Brg diterima dgn aman dan tepat
+              waktu.</div>
           </div>
-          <div class="review-card" onclick="window.open('https://maps.app.goo.gl/dummy', '_blank')"
+          <div class="review-card" onclick="window.open('https://share.google/kyPPkBvvvhPtOE2zK', '_blank')"
             style="cursor: pointer;">
             <div class="review-top">
               <div class="review-user">
-                <div class="review-avatar" style="background:#4f83ff">B</div>
+                <div class="review-avatar" style="background:#c9a44d">R</div>
                 <div>
-                  <div class="review-name">Budi Santoso</div>
-                  <div class="review-time">2 bulan lalu</div>
+                  <div class="review-name">
+                    rizkyani</div>
                 </div>
               </div><svg width="16" height="16" viewBox="0 0 24 24">
                 <path fill="#4285F4"
@@ -2778,17 +2865,17 @@
               </svg>
             </div>
             <div class="review-stars">★★★★★</div>
-            <div class="review-text">Layanan sangat memuaskan. Barang import dari China sampai tepat waktu dan aman.
-              Proses bea cukai dibantu dengan sangat profesional.</div>
+            <div class="review-text">Indotrans, sejauh ini aman sih ya dan lancar. Semoga kedepan lancar terussss dan
+              sukses.</div>
           </div>
-          <div class="review-card" onclick="window.open('https://maps.app.goo.gl/dummy', '_blank')"
+          <div class="review-card" onclick="window.open('https://share.google/kyPPkBvvvhPtOE2zK', '_blank')"
             style="cursor: pointer;">
             <div class="review-top">
               <div class="review-user">
-                <div class="review-avatar" style="background:#c9a44d">A</div>
+                <div class="review-avatar" style="background:#c9a44d">LF</div>
                 <div>
-                  <div class="review-name">Anita Kusuma</div>
-                  <div class="review-time">1 bulan lalu</div>
+                  <div class="review-name">
+                    Leo Fergiawan</div>
                 </div>
               </div><svg width="16" height="16" viewBox="0 0 24 24">
                 <path fill="#4285F4"
@@ -2802,16 +2889,53 @@
               </svg>
             </div>
             <div class="review-stars">★★★★★</div>
-            <div class="review-text">Sudah beberapa kali impor lewat Indotrans dan hasilnya selalu memuaskan. Komunikasi
-              cepat dan tim support Mandarin sangat membantu.</div>
-            <div class="review-photos">
-              <div class="review-photo"
-                style="background-image:url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=200&q=70')">
-              </div>
-              <div class="review-photo"
-                style="background-image:url('https://images.unsplash.com/photo-1578575436955-ef29da568c6d?w=200&q=70')">
-              </div>
+            <div class="review-text">Indotrans satset banget pengirimannya, no drama drama, mantapsss.</div>
+          </div>
+          <div class="review-card" onclick="window.open('https://share.google/kyPPkBvvvhPtOE2zK', '_blank')"
+            style="cursor: pointer;">
+            <div class="review-top">
+              <div class="review-user">
+                <div class="review-avatar" style="background:#c9a44d">FA</div>
+                <div>
+                  <div class="review-name">
+                    Firma Amanatunnisa</div>
+                </div>
+              </div><svg width="16" height="16" viewBox="0 0 24 24">
+                <path fill="#4285F4"
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                <path fill="#34A853"
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                <path fill="#FBBC05"
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
+                <path fill="#EA4335"
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+              </svg>
             </div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">Indotrans terbaik.</div>
+          </div>
+          <div class="review-card" onclick="window.open('https://share.google/kyPPkBvvvhPtOE2zK', '_blank')"
+            style="cursor: pointer;">
+            <div class="review-top">
+              <div class="review-user">
+                <div class="review-avatar" style="background:#c9a44d">TS</div>
+                <div>
+                  <div class="review-name">
+                    teguh subagio</div>
+                </div>
+              </div><svg width="16" height="16" viewBox="0 0 24 24">
+                <path fill="#4285F4"
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                <path fill="#34A853"
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                <path fill="#FBBC05"
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
+                <path fill="#EA4335"
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+              </svg>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">Pengiriman yg profesional.</div>
           </div>
         </div>
       </div>
@@ -2842,27 +2966,27 @@
 
           <!-- Desktop arc steps -->
           <div class="cara-step s1">
-            <div class="cara-step-icon"><i class="fas fa-headset"></i></div>
+            <div class="cara-step-icon"><img src="assets/icon/icon-1.png" alt=""></div>
             <div class="cara-step-label">Konsultasi<br>kebutuhan</div>
           </div>
           <div class="cara-step s2">
-            <div class="cara-step-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+            <div class="cara-step-icon"><img src="assets/icon/icon-2.png" alt=""></div>
             <div class="cara-step-label">Penawaran<br>& Estimasi</div>
           </div>
           <div class="cara-step s3">
-            <div class="cara-step-icon"><i class="fas fa-clipboard-check"></i></div>
+            <div class="cara-step-icon"><img src="assets/icon/icon-3.png" alt=""></div>
             <div class="cara-step-label">Konfirmasi &<br>proses pemesanan</div>
           </div>
           <div class="cara-step s4">
-            <div class="cara-step-icon"><i class="fas fa-shipping-fast"></i></div>
+            <div class="cara-step-icon"><img src="assets/icon/icon-4.png" alt=""></div>
             <div class="cara-step-label">Pengiriman<br>dari China</div>
           </div>
           <div class="cara-step s5">
-            <div class="cara-step-icon"><i class="fas fa-stamp"></i></div>
+            <div class="cara-step-icon"><img src="assets/icon/icon-5.png" alt=""></div>
             <div class="cara-step-label">Custom<br>Clearance</div>
           </div>
           <div class="cara-step s6">
-            <div class="cara-step-icon"><i class="fas fa-truck"></i></div>
+            <div class="cara-step-icon"><img src="assets/icon/icon-6.png" alt=""></div>
             <div class="cara-step-label">Pengantaran ke<br>Alamat Anda</div>
           </div>
 
@@ -2873,28 +2997,37 @@
 
           <!-- Mobile steps -->
           <div class="cara-steps-mobile">
+            <!-- Zigzag dashed connector (mobile only) -->
+            <svg class="cara-mobile-connector" viewBox="0 0 300 450" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M75,34 L225,34
+                   C295,34 295,166 225,166
+                   L75,166
+                   C5,166 5,298 75,298
+                   L225,298" fill="none" stroke="#FE914E" stroke-width="5" stroke-dasharray="9 10"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
             <div class="cara-step">
-              <div class="cara-step-icon"><i class="fas fa-headset"></i></div>
+              <div class="cara-step-icon"><img src="assets/icon/icon-1.png" alt=""></div>
               <div class="cara-step-label">Konsultasi<br>kebutuhan</div>
             </div>
             <div class="cara-step">
-              <div class="cara-step-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+              <div class="cara-step-icon"><img src="assets/icon/icon-2.png" alt=""></div>
               <div class="cara-step-label">Penawaran<br>& Estimasi</div>
             </div>
             <div class="cara-step">
-              <div class="cara-step-icon"><i class="fas fa-clipboard-check"></i></div>
+              <div class="cara-step-icon"><img src="assets/icon/icon-3.png" alt=""></div>
               <div class="cara-step-label">Konfirmasi &<br>proses pemesanan</div>
             </div>
             <div class="cara-step">
-              <div class="cara-step-icon"><i class="fas fa-shipping-fast"></i></div>
+              <div class="cara-step-icon"><img src="assets/icon/icon-4.png" alt=""></div>
               <div class="cara-step-label">Pengiriman<br>dari China</div>
             </div>
             <div class="cara-step">
-              <div class="cara-step-icon"><i class="fas fa-stamp"></i></div>
+              <div class="cara-step-icon"><img src="assets/icon/icon-5.png" alt=""></div>
               <div class="cara-step-label">Custom<br>Clearance</div>
             </div>
             <div class="cara-step">
-              <div class="cara-step-icon"><i class="fas fa-truck"></i></div>
+              <div class="cara-step-icon"><img src="assets/icon/icon-6.png" alt=""></div>
               <div class="cara-step-label">Pengantaran ke<br>Alamat Anda</div>
             </div>
           </div>
@@ -2990,9 +3123,11 @@
         <h2 class="cta-banner-title">Siap Mulai Impor dari China?</h2>
         <p class="cta-banner-text">Tim kami siap membantu Anda dari proses pembelian hingga pengiriman barang ke
           Indonesia.</p>
-        <a href="https://wa.me/628XXXXXXXXX?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
+        <a href="https://wa.me/6282269506267?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
           target="_blank" class="cta-banner-link">
-          Konsultasi Impor Sekarang
+          <span>
+            <i class="fab fa-whatsapp"></i> Konsultasi Impor Sekarang
+          </span>
         </a>
       </div>
     </div>
@@ -3004,15 +3139,18 @@
       <div class="footer-main">
         <div class="footer-brand">
           <div class="brand-wrap">
-            <div class="icon footer-logo-bg"><img src="assets/logo-indontrans-1.png" alt="Indotrans Cargo"></div>
+            <div class="icon"><img src="assets/logo-indontrans-2.png" alt="Indotrans Cargo"></div>
           </div>
           <p>Mitra terpercaya importir Indonesia selama 7+ tahun. Kami mengurus seluruh proses impor dari China hingga
             barang tiba aman di tangan Anda.</p>
           <div class="footer-social">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-tiktok"></i></a>
-            <a href="https://wa.me/628XXXXXXXXX?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
+            <a href="https://www.instagram.com/indotranscargo?igsh=MXV0aWJiMTV1dGdxZA=="><i
+                class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/100093863284520/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.tiktok.com/@indotranscargo?_r=1&_t=ZS-95nSrMqeEHy"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.tiktok.com/@indotranscargo?_r=1&_t=ZS-95nSrMqeEHy"><img style="width: 36px;"
+                src="assets/rednotelogo.png" alt=""></a>
+            <a href="https://wa.me/6282269506267?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
               target="_blank"><i class="fab fa-whatsapp"></i></a>
           </div>
         </div>
@@ -3039,10 +3177,13 @@
         </div>
         <div class="footer-col">
           <h4>Kontak</h4>
-          <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Jakarta, Indonesia</span></div>
-          <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><span>+62 8XX-XXXX-XXXX</span></div>
-          <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>info@indotranscargo.com</span></div>
-          <div class="footer-contact-item"><i class="fas fa-clock"></i><span>Senin–Sabtu, 08.00–18.00 WIB</span></div>
+          <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Jakarta Utara, Indonesia</span>
+          </div>
+          <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><span>+62 822 6950 6267</span></div>
+          <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>Indotransjayanusantara@gmail.com</span>
+          </div>
+          <div class="footer-contact-item"><i class="fas fa-clock"></i><span>Senin - Jumat, 09.00–17.00 WIB</span></div>
+          <div class="footer-contact-item"><i class="fas fa-clock"></i><span>Sabtu, 09.00–12.00 WIB</span></div>
         </div>
       </div>
       <div class="footer-bottom">
@@ -3056,7 +3197,7 @@
   <div class="wa-float">
     <span class="wa-label">Konsultasi Gratis Sekarang!</span>
     <a class="wa-btn"
-      href="https://wa.me/628XXXXXXXXX?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
+      href="https://wa.me/6282269506267?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
       target="_blank">
       <i class="fab fa-whatsapp"></i>
     </a>
