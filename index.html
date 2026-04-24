@@ -281,6 +281,7 @@
       background-size: cover;
       background-position: center top;
       z-index: 0;
+      filter: blur(3px);
     }
 
     /* LAYER 2: Gradient biru dari kiri */
@@ -324,6 +325,7 @@
       line-height: 1.1;
       margin-bottom: 18px;
       color: var(--white);
+      text-shadow: 0 2px 14px rgba(0, 44, 88, 0.74)
     }
 
     .hero-left h1 .orange {
@@ -331,11 +333,13 @@
     }
 
     .hero-left p {
-      font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+      font-size: clamp(1.4rem, 1.3vw, 1.05rem);
+      font-weight: 400;
       line-height: 1.65;
       color: rgba(255, 255, 255, 0.9);
       margin-bottom: 32px;
       max-width: 400px;
+      text-shadow: 0 2px 14px rgba(0, 44, 88, 0.74)
     }
 
     .hero-buttons {
@@ -2476,7 +2480,8 @@
             <i class="fab fa-2x fa-whatsapp"></i>
             Hubungi Kami
           </a>
-          <a href="#layanan" class="btn-secondary">Pilihan Layanan</a>
+          <a href="#layanan" class="btn-secondary"><img src="assets/icon/icon-box.png" width="26" alt=""> Pilihan
+            Layanan</a>
         </div>
       </div>
 
