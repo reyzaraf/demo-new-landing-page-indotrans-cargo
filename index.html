@@ -597,7 +597,7 @@
 
     /* ===================== SECTION SHARED ===================== */
     section:not(.hero):not(.pencapaian) {
-      padding: 90px 0;
+      padding: 70px 0;
     }
 
     .container {
@@ -949,7 +949,7 @@
 
     .klien-track {
       display: flex;
-      gap: 32px;
+      gap: 8px;
       animation: scroll 25s linear infinite;
       white-space: nowrap;
     }
@@ -1133,7 +1133,7 @@
 
     .cara-phone-device {
       width: clamp(620px, 98vw, 1000px);
-      max-width: none;
+      max-width: 90vh !important;
       height: auto;
       display: block;
       filter: drop-shadow(0 14px 30px rgba(12, 24, 46, .20));
@@ -1308,7 +1308,7 @@
       }
 
       .cara-phone-device {
-        width: min(92vw, 360px);
+        width: auto;
       }
     }
 
@@ -1872,7 +1872,7 @@
 
       .why-us-v4 .why-card-v4 {
         flex: 0 0 calc(100% - 4px);
-        min-height: 340px;
+        min-height: 450px;
         border-radius: 24px;
         scroll-snap-align: start;
       }
@@ -2348,24 +2348,24 @@
       color: #ffffff;
       margin-bottom: 12px;
       line-height: 1.15;
-      text-shadow: 0 4px 18px rgba(0, 44, 88, 0.28);
+      text-shadow: 0 4px 18px rgba(0, 44, 88, 0.78);
     }
 
     .cta-banner-text {
-      font-size: clamp(18px, 1.8vw, 34px);
+      /* font-size: clamp(18px, 1.8vw, 34px); */
       color: rgba(255, 255, 255, 0.95);
       font-weight: 300;
       margin: 0 auto 36px;
       max-width: 620px;
       line-height: 1.35;
-      text-shadow: 0 2px 14px rgba(0, 44, 88, 0.24);
+      text-shadow: 0 2px 14px rgba(0, 44, 88, 0.74) !important;
     }
 
     .cta-banner-link {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: min(520px, 90vw);
+      min-width: min(520px, 68vw);
       background: linear-gradient(135deg, #fe914e, #f28a49);
       color: #fff;
       padding: 18px 44px;
@@ -2376,11 +2376,33 @@
       box-shadow: 0 10px 28px rgba(254, 145, 78, 0.42);
       border: 1px solid rgba(255, 255, 255, 0.22);
       transition: all 0.3s;
+      animation: pulse 1.5s infinite;
     }
 
+    @keyframes pulse {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      25% {
+        transform: rotate(2deg);
+      }
+
+      50% {
+        transform: rotate(0eg);
+      }
+
+      75% {
+        transform: rotate(-2deg);
+      }
+
+      100% {
+        transform: rotate(0deg);
+      }
+    }
 
     .cta-banner-link:hover {
-      transform: translateY(-2px);
+      transform: translateY(-20px);
       box-shadow: 0 14px 32px rgba(254, 145, 78, 0.52);
       filter: saturate(1.05);
     }
@@ -2494,7 +2516,7 @@
   </div> -->
 
   <!-- ===================== WHY US ===================== -->
-  <section class="why-us why-us-v4" id="keunggulan">
+  <section class="why-us why-us-v4" id="tentang">
     <div class="container">
       <div class="section-head center reveal">
 
@@ -3121,7 +3143,8 @@
     <div class="container">
       <div class="reveal padding-cta">
         <h2 class="cta-banner-title">Siap Mulai Impor dari China?</h2>
-        <p class="cta-banner-text">Tim kami siap membantu Anda dari proses pembelian hingga pengiriman barang ke
+        <p class="cta-banner-text section-sub">Tim kami siap membantu Anda dari proses pembelian hingga pengiriman
+          barang ke
           Indonesia.</p>
         <a href="https://wa.me/6282269506267?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
           target="_blank" class="cta-banner-link">
