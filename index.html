@@ -1771,7 +1771,8 @@
       transition: transform .55s ease;
     }
 
-    .why-us-v4 .why-card-v4:hover::before {
+    .why-us-v4 .why-card-v4:hover::before,
+    .why-us-v4 .why-card-v4.active::before {
       transform: scale(1.08);
     }
 
@@ -1872,7 +1873,7 @@
 
       .why-us-v4 .why-card-v4 {
         flex: 0 0 calc(100% - 4px);
-        min-height: 450px;
+        min-height: 240px;
         border-radius: 24px;
         scroll-snap-align: start;
       }
@@ -2014,7 +2015,8 @@
       padding: 0;
     }
 
-    .layanan-card:hover {
+    .layanan-card:hover,
+    .layanan-card.active {
       transform: translateY(-6px) scale(1.01);
       box-shadow: 0 18px 48px rgba(13, 60, 143, .18);
     }
@@ -2027,7 +2029,8 @@
       transition: transform .5s ease;
     }
 
-    .layanan-card:hover .layanan-card-bg {
+    .layanan-card:hover .layanan-card-bg,
+    .layanan-card.active .layanan-card-bg {
       transform: scale(1.10);
     }
 
@@ -2041,7 +2044,8 @@
       transition: background 0.4s ease;
     }
 
-    .layanan-card:hover .layanan-card-overlay {
+    .layanan-card:hover .layanan-card-overlay,
+    .layanan-card.active .layanan-card-overlay {
       background: linear-gradient(to top, #0065a8 20%, #006FB9 40%, rgba(255, 255, 255, .10) 100%);
     }
 
@@ -2085,7 +2089,8 @@
       opacity: 0;
     }
 
-    .layanan-card:hover .layanan-card-body p {
+    .layanan-card:hover .layanan-card-body p,
+    .layanan-card.active .layanan-card-body p {
       max-height: 90px;
       opacity: 1;
     }
@@ -3331,6 +3336,38 @@
       window.addEventListener('resize', updateWhyDots);
       updateWhyDots();
     }
+
+    // Mobile tap-to-hover for Why Us & Layanan cards
+    (function () {
+      const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      if (!isTouchDevice()) return;
+
+      function setupTapHover(selector) {
+        const cards = document.querySelectorAll(selector);
+        cards.forEach(card => {
+          card.addEventListener('click', function (e) {
+            const isActive = this.classList.contains('active');
+            // Remove active from all siblings
+            cards.forEach(c => c.classList.remove('active'));
+            // Toggle on this card
+            if (!isActive) {
+              this.classList.add('active');
+            }
+          });
+        });
+      }
+
+      setupTapHover('.why-card-v4');
+      setupTapHover('.layanan-card');
+
+      // Clear active when tapping outside
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest('.why-card-v4') && !e.target.closest('.layanan-card')) {
+          document.querySelectorAll('.why-card-v4.active, .layanan-card.active')
+            .forEach(c => c.classList.remove('active'));
+        }
+      });
+    })();
   </script>
 </body>
 
