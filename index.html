@@ -22,7 +22,7 @@
       --blue: #0d3c8f;
       --blue-light: #1a55c4;
       --blue-dark: #082d6e;
-      --orange: #f57c00;
+      --orange: #FE914E;
       --orange-hover: #e65100;
       --white: #ffffff;
       --black: #1a1a1a;
@@ -84,18 +84,19 @@
     }
 
     .nav-logo-icon {
-      width: 42px;
-      height: 42px;
-      background: var(--blue);
-      border-radius: 10px;
+      width: 164px;
+      height: 164px;
+      border-radius: 25px;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
 
-    .nav-logo-icon i {
-      color: var(--orange);
-      font-size: 20px;
+    .nav-logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .nav-logo-text {
@@ -106,7 +107,7 @@
       font-family: 'Outfit', sans-serif;
       font-weight: 800;
       font-size: 17px;
-      color: var(--blue);
+      color: var(--orange);
     }
 
     .nav-logo-text .sub {
@@ -260,158 +261,291 @@
     /* ===================== HERO ===================== */
     .hero {
       position: relative;
-      min-height: 100vh;
-      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 60%, var(--blue-light) 100%);
+      width: 100%;
+      height: 100vh;
+      min-height: 500px;
+      max-height: 700px;
       overflow: hidden;
-      padding-top: 0;
-    }
-
-    .hero-slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 0.8s ease-in-out;
       display: flex;
       align-items: center;
       padding-top: 70px;
-      z-index: 1;
-      pointer-events: none;
+      /* navbar height */
     }
 
-    .hero-slide.active {
-      opacity: 1;
-      z-index: 2;
-      pointer-events: auto;
-    }
-
-    .hero-bg-img {
+    /* LAYER 1: Foto pelabuhan */
+    .hero-bg {
       position: absolute;
       inset: 0;
+      background-image: url('assets/hero-banner-1.png');
       background-size: cover;
-      background-position: center;
-      opacity: 0.35;
+      background-position: center top;
+      z-index: 0;
     }
 
+    /* LAYER 2: Gradient biru dari kiri */
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(2, 6, 16, 0.96) 0%, rgba(8, 34, 93, 0.80) 50%, rgba(13, 60, 143, 0.60) 100%);
+      background: linear-gradient(95deg,
+          rgba(0, 111, 185, 0.95) 0%,
+          rgba(0, 111, 185, 0.88) 25%,
+          rgba(0, 111, 185, 0.50) 48%,
+          rgba(0, 111, 185, 0.10) 65%,
+          transparent 100%);
+      z-index: 1;
     }
 
-    .hero-inner {
+    /* LAYER 3: Konten */
+    .hero-container {
       position: relative;
-      z-index: 2;
+      z-index: 10;
+      width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 80px 24px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      width: 100%;
-    }
-
-    .hero-nav {
-      position: absolute;
-      z-index: 10;
-      top: 50%;
-      width: 100%;
+      padding: 0 60px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      padding: 0 20px;
-      transform: translateY(-50%);
-      pointer-events: none;
+      gap: 40px;
+      height: 100%;
     }
 
-    .hero-nav button {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+    .hero-left {
+      flex: 1;
+      max-width: 500px;
       color: white;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: auto;
-      transition: all 0.3s;
-      backdrop-filter: blur(4px);
     }
 
-    .hero-nav button:hover {
-      background: var(--orange);
-      border-color: var(--orange);
-    }
-
-    .hero-dots {
-      position: absolute;
-      z-index: 10;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 8px;
-    }
-
-    .hero-dots .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.3);
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .hero-dots .dot.active {
-      background: var(--orange);
-      width: 24px;
-      border-radius: 5px;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(245, 124, 0, 0.2);
-      border: 1px solid rgba(245, 124, 0, 0.5);
-      color: #ffa726;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 20px;
-      margin-bottom: 20px;
-    }
-
-    .hero-badge i {
-      font-size: 12px;
-    }
-
-    .hero h1 {
-      font-size: clamp(28px, 4vw, 50px);
+    .hero-left h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 18px;
       color: var(--white);
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 20px;
     }
 
-    .hero h1 span {
-      color: #ffa726;
+    .hero-left h1 .orange {
+      color: var(--orange);
     }
 
-    .hero-sub {
-      font-size: 17px;
-      color: rgba(255, 255, 255, 0.85);
-      line-height: 1.7;
-      margin-bottom: 36px;
+    .hero-left p {
+      font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 32px;
+      max-width: 400px;
     }
 
-    .hero-btns {
+    .hero-buttons {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
     }
 
+    /* Hero scoped overrides for buttons */
+    .hero .btn-primary {
+      border-radius: 50px;
+      font-size: 1rem;
+      padding: 13px 26px;
+    }
+
+    .hero .btn-primary svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+      flex-shrink: 0;
+    }
+
+    .hero .btn-secondary {
+      border-radius: 50px;
+      font-size: 1rem;
+      padding: 12px 26px;
+    }
+
+    /* KANAN: stat cards */
+    .hero-right {
+      position: relative;
+      width: 380px;
+      flex-shrink: 0;
+      bottom: 40px;
+    }
+
+    .stats-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .stat-card {
+      position: relative;
+      background: linear-gradient(to bottom,
+          rgba(255, 255, 255, 0.97) 0%,
+          rgba(255, 255, 255, 0.90) 50%,
+          rgba(255, 255, 255, 0.0) 100%);
+      backdrop-filter: blur(8px);
+      border-radius: 16px 16px 0 0;
+      padding: 22px 26px 36px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+      opacity: 0;
+      transform: translateY(24px);
+      animation: statCardIn 0.6s ease-out forwards;
+      overflow: visible;
+    }
+
+    .stat-card:nth-child(1) {
+      animation-delay: 0.7s;
+    }
+
+    .stat-card:nth-child(2) {
+      animation-delay: 1.0s;
+    }
+
+    @keyframes statCardIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stat-card .stat-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--orange);
+      white-space: nowrap;
+      line-height: 1;
+      min-width: 80px;
+    }
+
+    .stat-card .stat-label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #222;
+      line-height: 1.4;
+    }
+
+    /* LAYER 4: PNG kapal */
+    .ship-png {
+      position: absolute;
+      right: clamp(-40px, -3vw, 0px);
+      bottom: clamp(-30px, -4vh, 0px);
+      width: clamp(300px, 55vw, 780px);
+      z-index: 20;
+      pointer-events: none;
+      display: none;
+      /* visible when asset is ready */
+    }
+
+    .ship-png img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Mobile hero */
+    @media (max-width: 768px) {
+      .hero {
+        height: auto;
+        min-height: 65svh;
+        max-height: none;
+        align-items: flex-start;
+      }
+
+      .hero-bg {
+        background-position: 62% top;
+        background-size: cover;
+      }
+
+      .hero-overlay {
+        background: linear-gradient(180deg,
+            rgba(10, 90, 210, 0.92) 0%,
+            rgba(10, 90, 210, 0.84) 34%,
+            rgba(10, 90, 210, 0.42) 62%,
+            rgba(10, 90, 210, 0.10) 100%);
+      }
+
+      .hero-container {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 34px 20px 92px;
+        gap: 32px;
+        height: auto;
+      }
+
+      .hero-left {
+        max-width: 100%;
+      }
+
+      .hero-left h1 {
+        font-size: 2.15rem;
+        line-height: 1.06;
+        margin-bottom: 16px;
+      }
+
+      .hero-left p {
+        font-size: 0.95rem;
+        line-height: 1.45;
+        max-width: 92%;
+        margin-bottom: 28px;
+      }
+
+      .hero-buttons {
+        width: 100%;
+        gap: 12px;
+      }
+
+      .hero .btn-primary,
+      .hero .btn-secondary {
+        flex: 1 1 calc(50% - 6px);
+        justify-content: center;
+        font-size: 0.9rem;
+        padding: 13px 16px;
+      }
+
+      .hero-right {
+        width: 100%;
+        bottom: 10px;
+      }
+
+      .stats-cards {
+        flex-direction: column;
+        gap: 0px;
+        width: 100%;
+      }
+
+      .stat-card {
+        width: 100%;
+        padding: 18px 20px 24px;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        border-radius: 14px 14px 0 0;
+      }
+
+      .stat-card .stat-number {
+        font-size: 2.1rem;
+        min-width: 92px;
+      }
+
+      .stat-card .stat-label {
+        font-size: 0.88rem;
+        line-height: 1.3;
+      }
+
+      .ship-png {
+        right: -20px;
+        bottom: -20px;
+        width: 100%;
+      }
+    }
+
+    /* Global button styles (used across sections) */
     .btn-primary {
       display: inline-flex;
       align-items: center;
@@ -449,85 +583,11 @@
     }
 
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 28px;
-      margin-top: 44px;
-      padding-top: 36px;
-      border-top: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .hero-stat .num {
-      font-family: 'Outfit', sans-serif;
-      font-size: 26px;
-      font-weight: 800;
-      color: #ffa726;
-    }
-
-    .hero-stat .label {
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.7);
-      margin-top: 2px;
-    }
-
-    .hero-card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 20px;
-      padding: 28px;
-      color: var(--white);
-    }
-
-    .hero-card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    .hero-card-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .hero-card-item:last-child {
-      border: none;
-      padding-bottom: 0;
-    }
-
-    .hero-card-item i {
-      color: #ffa726;
-      font-size: 18px;
-      width: 24px;
-      text-align: center;
-    }
-
-    .hero-card-item span {
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.9);
-      font-weight: 500;
-    }
-
-    @media (max-width: 768px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        padding: 60px 20px;
-      }
-
-      .hero-stats {
-        gap: 20px;
-      }
+      background: rgba(255, 255, 255, 0.25);
     }
 
     /* ===================== SECTION SHARED ===================== */
-    section {
+    section:not(.hero):not(.pencapaian) {
       padding: 90px 0;
     }
 
@@ -562,7 +622,7 @@
     }
 
     .section-title span {
-      color: var(--blue);
+      color: var(--orange);
     }
 
     .section-sub {
@@ -669,6 +729,8 @@
       }
     }
 
+
+
     /* ===================== LAYANAN ===================== */
     .layanan {
       background: var(--white);
@@ -728,7 +790,7 @@
     .layanan-card .tag {
       display: inline-block;
       background: #eaf0fc;
-      color: var(--blue);
+      color: var(--orange);
       font-size: 11px;
       font-weight: 700;
       padding: 3px 10px;
@@ -898,7 +960,7 @@
       align-items: center;
       justify-content: center;
       min-width: 160px;
-      height: 64px;
+      height: 164px;
       background: var(--gray);
       border-radius: 12px;
       border: 1px solid var(--border);
@@ -918,81 +980,320 @@
       border-color: var(--blue-light);
     }
 
-    /* ===================== PENCAPAIAN ===================== */
+    /* ===================== PENCAPAIAN / CARA MUDAH ===================== */
     .pencapaian {
-      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+      background: #eef2f7;
       position: relative;
+      overflow: visible;
+      padding-top: 90px;
+      padding-bottom: 0;
+    }
+
+    .container--pencapaian {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .cara-mudah-wrap {
+      position: relative;
+    }
+
+    .cara-mudah-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .cara-mudah-title h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(24px, 3.5vw, 38px);
+      font-weight: 800;
+      color: var(--blue-dark);
+      line-height: 1.3;
+    }
+
+    .cara-mudah-title h2 span {
+      color: var(--orange);
+    }
+
+    /* ---- Arc + Phone layout container ---- */
+    .cara-layout {
+      position: relative;
+      max-width: 960px;
+      margin: 0 auto;
+      height: clamp(400px, 50vw, 520px);
       overflow: hidden;
     }
 
-    .pencapaian::before {
-      content: '';
+    /* SVG arc connector behind everything */
+    .cara-arc-svg {
       position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 380px;
+      z-index: 0;
+      pointer-events: none;
     }
 
-    .pencapaian-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .pencapaian-item {
+    /* Step items - absolutely placed on the arc */
+    .cara-step {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      padding: 50px 24px;
-      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      width: 120px;
+      z-index: 2;
     }
 
-    .pencapaian-item:last-child {
-      border: none;
-    }
-
-    .pencapaian-num {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(42px, 5vw, 64px);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1;
+    .cara-step-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin-bottom: 8px;
+      box-shadow: 0 8px 22px rgba(245, 124, 0, .30);
+      flex-shrink: 0;
     }
 
-    .pencapaian-num span {
-      color: #ffa726;
+    .cara-step-icon i {
+      color: #fff;
+      font-size: 22px;
     }
 
-    .pencapaian-label {
-      font-size: 16px;
-      color: rgba(255, 255, 255, 0.75);
-      font-weight: 500;
-    }
-
-    .pencapaian-sub {
+    .cara-step-label {
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.45);
-      margin-top: 4px;
+      font-weight: 700;
+      color: var(--blue-dark);
+      line-height: 1.3;
     }
 
-    @media (max-width: 700px) {
-      .pencapaian-grid {
-        grid-template-columns: 1fr;
+    /*
+      Step positions — match viewBox 960×380 arc.
+      s1 center ≈ (66,320)  s2 center ≈ (166,160)
+      s3 center ≈ (340,62)  s4 center ≈ (560,62)
+      s5 center ≈ (732,160) s6 center ≈ (836,320)
+    */
+    .cara-step.s1 {
+      left: 6px;
+      top: 292px;
+    }
+
+    .cara-step.s2 {
+      left: 106px;
+      top: 132px;
+    }
+
+    .cara-step.s3 {
+      left: 280px;
+      top: 34px;
+    }
+
+    .cara-step.s4 {
+      right: 280px;
+      top: 34px;
+    }
+
+    .cara-step.s5 {
+      right: 106px;
+      top: 132px;
+    }
+
+    .cara-step.s6 {
+      right: 6px;
+      top: 292px;
+    }
+
+    /* ---- Phone mockup from PNG asset ---- */
+    .cara-phone-wrap {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 78px;
+      z-index: 3;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      pointer-events: none;
+    }
+
+    .cara-phone-device {
+      width: clamp(620px, 98vw, 1000px);
+      max-width: none;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 14px 30px rgba(12, 24, 46, .20));
+    }
+
+    /* Product cards floating over the phone bottom */
+    .cara-float-assets {
+      position: absolute;
+      bottom: 60px;
+      right: -55px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+      z-index: 4;
+    }
+
+    .cara-item-card {
+      width: 80px;
+      height: 80px;
+      border-radius: 14px;
+      background: #edf8d8;
+      padding: 5px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .14);
+      border: 1.5px solid #d4eba5;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .cara-item-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 9px;
+      display: block;
+      background: #fff;
+    }
+
+    /* bags slightly higher */
+    .cara-item-card.card-bags {
+      transform: translateY(-16px);
+    }
+
+    /* glasses at baseline, slightly bigger */
+    .cara-item-card.card-glases {
+      width: 88px;
+      height: 88px;
+    }
+
+
+    /* ---- Tablet + Mobile responsive (≤1023px) ---- */
+    @media (max-width: 1023px) {
+      .cara-layout {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
-      .pencapaian-item {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      .cara-arc-svg {
+        display: none;
       }
 
-      .pencapaian-item:last-child {
-        border: none;
+      /* Steps first (order 1), phone below (order 2) */
+      .cara-steps-mobile {
+        order: 1;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px 10px;
+        width: 100%;
+        padding: 0 4px 24px;
       }
+
+      .cara-phone-wrap {
+        order: 2;
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 8px;
+        margin-bottom: 0;
+      }
+
+      .cara-phone-device {
+        width: min(80vw, 480px);
+        max-width: 100%;
+      }
+
+      .cara-float-assets {
+        right: -10px;
+        bottom: 4px;
+        width: 92px;
+        height: 98px;
+      }
+
+      .cara-item-card {
+        width: 56px;
+        height: 56px;
+        border-radius: 10px;
+      }
+
+      .cara-item-card.card-bags {
+        top: 8px;
+        left: 0;
+      }
+
+      .cara-item-card.card-glases {
+        right: 0;
+        bottom: 0;
+        width: 62px;
+        height: 62px;
+        transform: none;
+      }
+
+      .cara-step {
+        position: static !important;
+        width: auto;
+      }
+
+      .cara-step-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 6px;
+      }
+
+      .cara-step-icon i {
+        font-size: 18px;
+      }
+
+      .cara-step-label {
+        font-size: 11.5px;
+        line-height: 1.3;
+      }
+
+      /* Hide desktop arc steps on tablet/mobile */
+      .cara-layout>.cara-step {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cara-steps-mobile {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px 10px;
+      }
+
+      .cara-step-label {
+        font-size: 12px;
+      }
+
+      .cara-phone-device {
+        width: min(92vw, 360px);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .cara-steps-mobile {
+        display: none;
+      }
+    }
+
+    /* Keep old counter grid hidden */
+    .pencapaian-grid {
+      display: none;
     }
 
     /* ===================== FAQ ===================== */
     .faq {
-      background: var(--gray);
+      background: var(--white);
     }
 
     .faq-grid {
@@ -1067,7 +1368,7 @@
 
     /* ===================== FOOTER ===================== */
     footer {
-      background: #050f1f;
+      background: #006FB9;
       color: rgba(255, 255, 255, 0.75);
     }
 
@@ -1086,18 +1387,25 @@
     }
 
     .footer-brand .icon {
-      width: 44px;
-      height: 44px;
-      background: var(--blue);
-      border-radius: 10px;
+      width: 220px;
+      height: 65px;
+      border-radius: 15px;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
     }
 
-    .footer-brand .icon i {
-      color: var(--orange);
-      font-size: 20px;
+    .footer-logo-bg {
+      background: #ffffff;
+      padding: 6px;
+    }
+
+    .footer-brand .icon img {
+      width: 184px;
+      height: 184px;
+      object-fit: contain;
     }
 
     .footer-brand .name {
@@ -1213,7 +1521,13 @@
 
     @media (max-width: 560px) {
       .footer-main {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      /* Brand column spans full width */
+      .footer-main .footer-brand {
+        grid-column: 1 / -1;
       }
 
       .footer-bottom {
@@ -1226,56 +1540,68 @@
     .wa-float {
       position: fixed;
       bottom: 28px;
-      right: 28px;
+      right: 24px;
       z-index: 999;
       display: flex;
       align-items: center;
-      gap: 0;
+      gap: 12px;
       transition: all 0.3s;
     }
 
+    /* Speech-bubble label (always visible) */
     .wa-label {
-      background: var(--white);
-      color: #25D366;
-      font-weight: 600;
-      font-size: 13.5px;
-      padding: 10px 16px;
-      border-radius: 30px 0 0 30px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+      background: #25D366;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14.5px;
+      padding: 13px 22px;
+      border-radius: 28px;
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.40);
       white-space: nowrap;
-      max-width: 0;
-      overflow: hidden;
-      transition: max-width 0.4s ease, padding 0.3s;
-      padding-left: 0;
-      padding-right: 0;
+      /* speech bubble tail pointing right */
+      position: relative;
+      letter-spacing: 0.2px;
     }
 
-    .wa-float:hover .wa-label {
-      max-width: 240px;
-      padding-left: 16px;
-      padding-right: 12px;
+    .wa-label::after {
+      content: '';
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+      border-left: 11px solid #25D366;
     }
 
+    /* Round WA icon button */
     .wa-btn {
-      width: 60px;
-      height: 60px;
+      width: 62px;
+      height: 62px;
       background: #25D366;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+      box-shadow: 0 4px 22px rgba(37, 211, 102, 0.50);
       transition: all 0.3s;
+      flex-shrink: 0;
+      border: 3px solid rgba(255, 255, 255, 0.85);
     }
 
     .wa-btn i {
       color: var(--white);
-      font-size: 28px;
+      font-size: 30px;
     }
 
     .wa-btn:hover {
-      transform: scale(1.1);
+      transform: scale(1.09);
+      box-shadow: 0 8px 32px rgba(37, 211, 102, 0.60);
+    }
+
+    .wa-float:hover .wa-label {
+      transform: translateX(-3px);
       box-shadow: 0 8px 32px rgba(37, 211, 102, 0.55);
     }
 
@@ -1283,10 +1609,10 @@
       position: absolute;
       top: 0;
       right: 0;
-      width: 60px;
-      height: 60px;
+      width: 62px;
+      height: 62px;
       border-radius: 50%;
-      background: rgba(37, 211, 102, 0.4);
+      background: rgba(37, 211, 102, 0.35);
       animation: pulse 2s infinite;
     }
 
@@ -1297,8 +1623,21 @@
       }
 
       100% {
-        transform: scale(1.7);
+        transform: scale(1.75);
         opacity: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .wa-label {
+        font-size: 13px;
+        padding: 11px 16px;
+      }
+
+      .wa-float {
+        right: 14px;
+        bottom: 18px;
+        gap: 8px;
       }
     }
 
@@ -1363,23 +1702,23 @@
       box-shadow: 0 16px 40px rgba(25, 46, 94, .12);
       isolation: isolate;
       background-size: cover;
-      background-position: center;
+      background-position: right;
     }
 
     .why-us-v4 .why-card-v4.card-exp {
-      background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80');
+      background-image: url('assets/benefit/Pengalaman.png');
     }
 
     .why-us-v4 .why-card-v4.card-safe {
-      background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=900&q=80');
+      background-image: url('assets/benefit/garansi.png');
     }
 
     .why-us-v4 .why-card-v4.card-mandarin {
-      background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=900&q=80');
+      background-image: url('assets/benefit/timsupport.png');
     }
 
     .why-us-v4 .why-card-v4.card-jakarta {
-      background-image: url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=900&q=80');
+      background-image: url('assets/benefit/gratisongkirjakarta.png');
     }
 
     .why-us-v4 .why-card-v4::before {
@@ -1388,7 +1727,7 @@
       inset: 0;
       background: inherit;
       background-size: cover;
-      background-position: center;
+      background-position: inherit;
       transform: scale(1.02);
       transition: transform .55s ease;
     }
@@ -1400,7 +1739,7 @@
     .why-us-v4 .why-card-overlay-v4 {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(15, 54, 120, .10) 0%, rgba(13, 54, 120, .58) 25%, rgba(4, 18, 50, 0.98) 75%);
+      background: linear-gradient(180deg, rgba(0, 111, 185, .10) 0%, rgba(0, 111, 185, .58) 25%, rgba(0, 87, 146, 0.98) 75%);
       z-index: 1;
       transition: background 0.4s ease;
     }
@@ -1408,7 +1747,7 @@
     .why-us-v4 .why-card-v4:hover .why-card-overlay-v4,
     .why-us-v4 .why-card-v4:focus-within .why-card-overlay-v4,
     .why-us-v4 .why-card-v4.active .why-card-overlay-v4 {
-      background: linear-gradient(180deg, rgba(15, 54, 120, .10) 0%, rgba(13, 54, 120, .75) 15%, rgba(4, 18, 50, 0.98) 55%);
+      background: linear-gradient(180deg, rgba(0, 111, 185, .10) 0%, rgba(0, 111, 185, .75) 15%, rgba(0, 87, 146, 0.98) 55%);
     }
 
     .why-us-v4 .why-content-v4 {
@@ -1424,7 +1763,7 @@
       width: 58px;
       height: 58px;
       border-radius: 18px;
-      background: #ff8a00;
+      background: #fe914e;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1446,8 +1785,8 @@
       font-size: 15px;
       line-height: 1.7;
       color: rgba(255, 255, 255, .82);
-      margin: 10px 0 0;
-      max-width: 26ch;
+      margin: 10 0 0;
+      max-width: 41ch;
       max-height: 0;
       opacity: 0;
       overflow: hidden;
@@ -1469,14 +1808,28 @@
       }
     }
 
+    /* Mobile: slider – show 1 card */
     @media(max-width:640px) {
       .why-us-v4 .why-grid-v4 {
-        grid-template-columns: 1fr;
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 16px;
+        padding-bottom: 12px;
+        /* hide scrollbar */
+        scrollbar-width: none;
+      }
+
+      .why-us-v4 .why-grid-v4::-webkit-scrollbar {
+        display: none;
       }
 
       .why-us-v4 .why-card-v4 {
-        min-height: 320px;
+        flex: 0 0 calc(100% - 4px);
+        min-height: 340px;
         border-radius: 24px;
+        scroll-snap-align: start;
       }
 
       .why-us-v4 .why-content-v4 {
@@ -1484,7 +1837,36 @@
         right: 22px;
         bottom: 22px;
       }
+
+      /* Show swipe hint dots */
+      .why-swipe-hint {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 14px;
+      }
+
+      .why-swipe-hint span {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #c8d8f0;
+        display: inline-block;
+        transition: background 0.3s;
+      }
+
+      .why-swipe-hint span.active {
+        background: var(--blue);
+        width: 20px;
+        border-radius: 4px;
+      }
     }
+
+    /* Desktop: keep hint hidden */
+    .why-swipe-hint {
+      display: none;
+    }
+
 
     /* ===================== FAQ CLEAN FIX ===================== */
     .faq-columns {
@@ -1566,6 +1948,397 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ===================== LAYANAN SECTION DETAIL ===================== */
+    .layanan-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .layanan-card {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      height: 260px;
+      cursor: default;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .1);
+      transition: transform .4s, box-shadow .4s;
+      background: #000;
+      border: none;
+      padding: 0;
+    }
+
+    .layanan-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 18px 48px rgba(13, 60, 143, .18);
+    }
+
+    .layanan-card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform .5s ease;
+    }
+
+    .layanan-card:hover .layanan-card-bg {
+      transform: scale(1.10);
+    }
+
+    .layanan-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, #006FB9 0%, #0065a8 10%, rgba(255, 255, 255, .15) 100%);
+      transition: background 0.4s ease;
+    }
+
+    .layanan-card:hover .layanan-card-overlay {
+      background: linear-gradient(to top, #0065a8 20%, #006FB9 40%, rgba(255, 255, 255, .10) 100%);
+    }
+
+    .layanan-card-body {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 22px;
+    }
+
+    .layanan-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 11px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      letter-spacing: .4px;
+    }
+
+    .layanan-card-body h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.25;
+    }
+
+    .layanan-card-body p {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .78);
+      line-height: 1.6;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease, opacity .35s;
+      opacity: 0;
+    }
+
+    .layanan-card:hover .layanan-card-body p {
+      max-height: 90px;
+      opacity: 1;
+    }
+
+    @media (max-width:900px) {
+      .layanan-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+    }
+
+    @media (max-width:560px) {
+      .layanan .container {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .layanan-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .layanan-card {
+        height: 206px;
+      }
+
+      .layanan-card-body {
+        padding: 16px;
+      }
+    }
+
+    /* ===================== TESTIMONI SECTION DETAIL ===================== */
+    .testimoni {
+      background: #fff !important;
+      overflow: hidden;
+    }
+
+    .testimoni .section-title {
+      color: var(--black) !important;
+    }
+
+    .testimoni .section-sub {
+      color: var(--gray-text) !important;
+    }
+
+    .testimoni .section-label {
+      color: var(--orange) !important;
+    }
+
+    .testimoni .section-head {
+      margin-bottom: 32px;
+    }
+
+    .g-head-mini {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .g-mini-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #f8fbff;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #666;
+    }
+
+    .g-mini-pill .stars {
+      color: #fbbc05;
+      letter-spacing: 2px;
+    }
+
+    .review-strip-wrap {
+      overflow: hidden;
+      position: relative;
+      padding: 24px 0;
+      margin: -24px 0;
+    }
+
+    .review-strip {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: reviewMove 34s linear infinite;
+    }
+
+    .review-strip-wrap:hover .review-strip {
+      animation-play-state: paused;
+    }
+
+    .review-strip:hover .review-card {
+      opacity: 0.6;
+    }
+
+    @keyframes reviewMove {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .review-card {
+      width: 280px;
+      min-height: 180px;
+      background: #fff;
+      border: 1px solid #e7ebf1;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .review-strip .review-card:hover {
+      opacity: 1;
+      transform: scale(1.08);
+      z-index: 10;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .15);
+    }
+
+    .review-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .review-user {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .review-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .review-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #222;
+      line-height: 1.2;
+    }
+
+    .review-time {
+      font-size: 11px;
+      color: #8a8a8a;
+      margin-top: 4px;
+    }
+
+    .review-stars {
+      color: #fbbc05;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .review-text {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #555;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 84px;
+    }
+
+    .review-photos {
+      display: flex;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .review-photo {
+      width: 56px;
+      height: 36px;
+      border-radius: 6px;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid #ececec;
+    }
+
+    /* ===================== KLIEN SECTION DETAIL ===================== */
+    .klien {
+      background: var(--white);
+    }
+
+    .klien-strip {
+      padding: 24px 0 20px;
+    }
+
+    .klien-logo {
+      padding: 10px;
+    }
+
+    .klien-logo img {
+      max-height: 64px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    /* ===================== CTA BANNER DETAIL ===================== */
+    .cta-banner {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      padding: 110px 0 120px;
+      background-image: url('assets/cta-banner.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg,
+          rgba(255, 255, 255, 0.99) 0%,
+          rgba(200, 225, 245, 0.55) 26%,
+          rgba(0, 111, 185, 0.78) 68%,
+          rgba(0, 111, 185, 0.95) 100%);
+      z-index: 1;
+    }
+
+    .cta-banner .container {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .padding-cta {
+      padding: 8vh 0px;
+    }
+
+    .cta-banner-title {
+      font-family: Outfit, sans-serif;
+      font-size: clamp(32px, 4.2vw, 52px);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 12px;
+      line-height: 1.15;
+      text-shadow: 0 4px 18px rgba(0, 44, 88, 0.28);
+    }
+
+    .cta-banner-text {
+      font-size: clamp(18px, 1.8vw, 34px);
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 300;
+      margin: 0 auto 36px;
+      max-width: 950px;
+      line-height: 1.35;
+      text-shadow: 0 2px 14px rgba(0, 44, 88, 0.24);
+    }
+
+    .cta-banner-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: min(520px, 90vw);
+      background: linear-gradient(135deg, #fe914e, #f28a49);
+      color: #fff;
+      padding: 18px 44px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: clamp(18px, 1.5vw, 34px);
+      text-decoration: none;
+      box-shadow: 0 10px 28px rgba(254, 145, 78, 0.42);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      transition: all 0.3s;
+    }
+
+    .cta-banner-link i {
+      display: none;
+    }
+
+    .cta-banner-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(254, 145, 78, 0.52);
+      filter: saturate(1.05);
+    }
   </style>
 </head>
 
@@ -1575,11 +2348,7 @@
   <nav id="navbar">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
-        <div class="nav-logo-icon"><i class="fas fa-ship"></i></div>
-        <div class="nav-logo-text">
-          <div class="brand">Indotrans Cargo</div>
-          <div class="sub">Forwarder China–Indonesia</div>
-        </div>
+        <div class="nav-logo-icon"><img src="assets/logo-indontrans-1.png" alt="Indotrans Cargo"></div>
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#home" class="active">Beranda</a></li>
@@ -1608,124 +2377,66 @@
 
   <!-- ===================== HERO ===================== -->
   <section class="hero" id="home">
-    <!-- Slide 1 -->
-    <div class="hero-slide active">
-      <div class="hero-bg-img"
-        style="background-image:url('https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=1600&q=80')"></div>
-      <div class="hero-overlay"></div>
-      <div class="hero-inner">
-        <div>
-          <div class="hero-badge"><i class="fas fa-star"></i> Dipercaya 500+ Importir Indonesia</div>
-          <h1>Forwarder Import <span>China–Indonesia</span> Berpengalaman & Terpercaya</h1>
-          <p class="hero-sub">Kami urus proses impor Anda dari supplier hingga barang tiba di gudang dengan aman, cepat,
-            dan transparan.</p>
-          <div class="hero-btns">
-            <a href="https://wa.me/628XXXXXXXXX?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
-              target="_blank" class="btn-primary">
-              <i class="fab fa-whatsapp"></i> Konsultasi Impor
-            </a>
-            <a href="#layanan" class="btn-secondary">
-              <i class="fas fa-boxes"></i> Lihat Layanan
-            </a>
-          </div>
-          <div class="hero-stats">
-            <div class="hero-stat">
-              <div class="num">500+</div>
-              <div class="label">Total Customer</div>
-            </div>
-            <div class="hero-stat">
-              <div class="num">5M+</div>
-              <div class="label">Total Kubikasi</div>
-            </div>
-            <div class="hero-stat">
-              <div class="num">95%</div>
-              <div class="label">Kepuasan Klien</div>
-            </div>
-          </div>
-        </div>
-        <div class="hero-card">
-          <h3><i class="fas fa-shield-alt" style="color:#ffa726;margin-right:8px"></i>Keunggulan Layanan</h3>
-          <div class="hero-card-item"><i class="fas fa-check-circle"></i><span>Door-to-Door dari China ke
-              Indonesia</span></div>
-          <div class="hero-card-item"><i class="fas fa-check-circle"></i><span>Tim Support Berbahasa Mandarin</span>
-          </div>
-          <div class="hero-card-item"><i class="fas fa-check-circle"></i><span>Customs Clearance Profesional</span>
-          </div>
-          <div class="hero-card-item"><i class="fas fa-check-circle"></i><span>Gratis Ongkir Area Jakarta*</span></div>
-          <div class="hero-card-item"><i class="fas fa-check-circle"></i><span>Pengalaman 5+ Tahun</span></div>
-          <div style="margin-top:20px"><a
-              href="https://wa.me/628XXXXXXXXX?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
-              target="_blank" class="btn-primary" style="width:100%;justify-content:center"><i
-                class="fab fa-whatsapp"></i> Mulai Konsultasi Gratis</a></div>
+
+    <!-- LAYER 1: Foto pelabuhan -->
+    <div class="hero-bg"></div>
+
+    <!-- LAYER 2: Gradient biru kiri -->
+    <div class="hero-overlay"></div>
+
+    <!-- LAYER 3: Konten -->
+    <div class="hero-container">
+
+      <!-- KIRI: Teks + tombol -->
+      <div class="hero-left">
+        <h1>
+          <span class="orange">Solusi Import</span><br>
+          China ke
+          Indonesia
+        </h1>
+        <p>
+          Indotrans Cargo menyediakan layanan import mulai dari pembelian, pembayaran, hingga pengiriman ke Indonesia.
+        </p>
+        <div class="hero-buttons">
+          <a href="https://wa.me/628XXXXXXXXX?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
+            target="_blank" class="btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+              <path
+                d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.14 1.545 5.875L.057 23.527a.5.5 0 0 0 .608.635l5.945-1.56A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.713 9.713 0 0 1-4.953-1.355l-.356-.21-3.681.965.982-3.585-.232-.369A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z" />
+            </svg>
+            Hubungi Kami
+          </a>
+          <a href="#layanan" class="btn-secondary">Pilihan Layanan</a>
         </div>
       </div>
-    </div>
 
-    <!-- Slide 2 -->
-    <div class="hero-slide">
-      <div class="hero-bg-img"
-        style="background-image:url('https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=1600&q=80')"></div>
-      <div class="hero-overlay"></div>
-      <div class="hero-inner">
-        <div>
-          <div class="hero-badge"><i class="fas fa-truck"></i> Layanan Pengiriman Door-to-Door</div>
-          <h1>Solusi Pengiriman <span>Efisien & Cepat</span> dari China ke Indonesia</h1>
-          <p class="hero-sub">Nikmati kemudahan layanan impor tanpa batas dengan efisiensi waktu, biaya, serta dukungan
-            tim yang siap setiap saat.</p>
-          <div class="hero-btns">
-            <a href="https://wa.me/628XXXXXXXXX?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
-              target="_blank" class="btn-primary">
-              <i class="fab fa-whatsapp"></i> Hubungi Kami
-            </a>
-            <a href="#layanan" class="btn-secondary">
-              <i class="fas fa-boxes"></i> Pilihan Layanan
-            </a>
+      <!-- KANAN: Stat cards -->
+      <div class="hero-right">
+        <div class="stats-cards">
+          <div class="stat-card">
+            <div class="stat-number" data-target="700" data-suffix="+">700+</div>
+            <div class="stat-label">Importir telah mempercayai<br>Layanan kami</div>
           </div>
-          <div class="hero-stats">
-            <div class="hero-stat">
-              <div class="num">500+</div>
-              <div class="label">Total Customer</div>
-            </div>
-            <div class="hero-stat">
-              <div class="num">5M+</div>
-              <div class="label">Total Kubikasi</div>
-            </div>
-            <div class="hero-stat">
-              <div class="num">95%</div>
-              <div class="label">Kepuasan Klien</div>
-            </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="98" data-suffix="%">98%</div>
+            <div class="stat-label">Kepuasan customer</div>
           </div>
-        </div>
-        <div class="hero-card">
-          <h3><i class="fas fa-shield-alt" style="color:#ffa726;margin-right:8px"></i>Keunggulan Layanan</h3>
-          <div class="hero-card-item"><i class="fas fa-check-circle"></i><span>Door-to-Door dari China ke
-              Indonesia</span></div>
-          <div class="hero-card-item"><i class="fas fa-check-circle"></i><span>Tim Support Berbahasa Mandarin</span>
-          </div>
-          <div class="hero-card-item"><i class="fas fa-check-circle"></i><span>Customs Clearance Profesional</span>
-          </div>
-          <div class="hero-card-item"><i class="fas fa-check-circle"></i><span>Gratis Ongkir Area Jakarta*</span></div>
-          <div class="hero-card-item"><i class="fas fa-check-circle"></i><span>Pengalaman 5+ Tahun</span></div>
-          <div style="margin-top:20px"><a
-              href="https://wa.me/628XXXXXXXXX?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
-              target="_blank" class="btn-primary" style="width:100%;justify-content:center"><i
-                class="fab fa-whatsapp"></i> Mulai Konsultasi Gratis</a></div>
         </div>
       </div>
+
     </div>
 
-    <div class="hero-nav">
-      <button onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
-      <button onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
+    <!-- LAYER 4: PNG kapal (aktifkan saat asset kapal-layer.png tersedia) -->
+    <div class="ship-png">
+      <img src="kapal-layer.png" alt="Kapal kargo" />
     </div>
-    <div class="hero-dots">
-      <div class="dot active" onclick="goToSlide(0)"></div>
-      <div class="dot" onclick="goToSlide(1)"></div>
-    </div>
+
   </section>
 
   <!-- ===================== TRUST BAR ===================== -->
-  <div class="trust-bar">
+  <!-- <div class="trust-bar">
     <div class="trust-track">
       <div class="trust-item"><i class="fas fa-shield-alt"></i> Pengiriman Aman & Terpercaya</div>
       <div class="trust-item"><i class="fas fa-shipping-fast"></i> Sea Freight & Air Freight</div>
@@ -1733,7 +2444,6 @@
       <div class="trust-item"><i class="fas fa-warehouse"></i> Warehousing Jakarta</div>
       <div class="trust-item"><i class="fas fa-truck"></i> Gratis Ongkir Jakarta</div>
       <div class="trust-item"><i class="fas fa-yen-sign"></i> Transfer RMB Aman</div>
-      <!-- duplicate for scroll effect -->
       <div class="trust-item"><i class="fas fa-shield-alt"></i> Pengiriman Aman & Terpercaya</div>
       <div class="trust-item"><i class="fas fa-shipping-fast"></i> Sea Freight & Air Freight</div>
       <div class="trust-item"><i class="fas fa-comments"></i> Tim Mandarin Support</div>
@@ -1741,7 +2451,7 @@
       <div class="trust-item"><i class="fas fa-truck"></i> Gratis Ongkir Jakarta</div>
       <div class="trust-item"><i class="fas fa-yen-sign"></i> Transfer RMB Aman</div>
     </div>
-  </div>
+  </div> -->
 
   <!-- ===================== WHY US ===================== -->
   <section class="why-us why-us-v4" id="keunggulan">
@@ -1758,7 +2468,7 @@
           <div class="why-card-overlay-v4"></div>
           <div class="why-content-v4">
             <div class="why-icon-v4"><i class="fas fa-medal"></i></div>
-            <h3>5+ Tahun Berpengalaman</h3>
+            <h3>7+ Tahun Berpengalaman</h3>
             <p>Membantu berbagai pelaku usaha dalam proses impor barang dari China ke Indonesia secara aman dan terarah.
             </p>
           </div>
@@ -1791,6 +2501,10 @@
           </div>
         </article>
       </div>
+      <!-- Mobile swipe indicator -->
+      <div class="why-swipe-hint" id="whySwipeHint">
+        <span class="active"></span><span></span><span></span><span></span>
+      </div>
     </div>
   </section>
 
@@ -1802,141 +2516,30 @@
         <p class="section-sub">Layanan pengiriman dan impor dari China ke Indonesia dengan berbagai solusi terintegrasi.
         </p>
       </div>
-      <style>
-        .layanan-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 22px;
-        }
 
-        .layanan-card {
-          position: relative;
-          border-radius: 18px;
-          overflow: hidden;
-          height: 260px;
-          cursor: default;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, .1);
-          transition: transform .4s, box-shadow .4s;
-          background: #000;
-          border: none;
-          padding: 0
-        }
-
-        .layanan-card:hover {
-          transform: translateY(-6px) scale(1.01);
-          box-shadow: 0 18px 48px rgba(13, 60, 143, .18)
-        }
-
-        .layanan-card-bg {
-          position: absolute;
-          inset: 0;
-          background-size: cover;
-          background-position: center;
-          transition: transform .5s ease
-        }
-
-        .layanan-card:hover .layanan-card-bg {
-          transform: scale(1.10)
-        }
-
-        .layanan-card-overlay {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(to top, rgba(2, 6, 16, 1) 0%, rgba(5, 15, 40, .92) 55%, rgba(5, 15, 40, .15) 100%);
-          transition: background 0.4s ease;
-        }
-
-        .layanan-card:hover .layanan-card-overlay {
-          background: linear-gradient(to top, rgba(2, 6, 16, 1) 20%, rgba(13, 60, 143, .95) 70%, rgba(13, 60, 143, .10) 100%);
-        }
-
-        .layanan-card-body {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          padding: 22px
-        }
-
-        .layanan-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 5px;
-          background: var(--orange);
-          color: #fff;
-          font-size: 11px;
-          font-weight: 700;
-          padding: 3px 11px;
-          border-radius: 20px;
-          margin-bottom: 10px;
-          letter-spacing: .4px
-        }
-
-        .layanan-card-body h3 {
-          font-size: 18px;
-          font-weight: 700;
-          color: #fff;
-          margin-bottom: 8px;
-          line-height: 1.25
-        }
-
-        .layanan-card-body p {
-          font-size: 13px;
-          color: rgba(255, 255, 255, .78);
-          line-height: 1.6;
-          max-height: 0;
-          overflow: hidden;
-          transition: max-height .4s ease, opacity .35s;
-          opacity: 0
-        }
-
-        .layanan-card:hover .layanan-card-body p {
-          max-height: 90px;
-          opacity: 1
-        }
-
-        @media (max-width:900px) {
-          .layanan-grid {
-            grid-template-columns: repeat(2, 1fr)
-          }
-        }
-
-        @media (max-width:560px) {
-          .layanan-grid {
-            grid-template-columns: 1fr
-          }
-
-          .layanan-card {
-            height: 220px
-          }
-        }
-      </style>
       <div class="layanan-grid">
         <div class="layanan-card reveal">
-          <div class="layanan-card-bg"
-            style="background-image:url('https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=800&q=80')">
+          <div class="layanan-card-bg" style="background-image:url('assets/layanan/Sea_LCL.png')">
           </div>
           <div class="layanan-card-overlay"></div>
           <div class="layanan-card-body">
-            <div class="layanan-badge"><i class="fas fa-ship"></i> Sea Freight</div>
+            <div class="layanan-badge"><i class="fas fa-ship"></i> Sea Freight LCL</div>
             <h3>Sea Freight LCL</h3>
             <p>Pengiriman laut yang efisien untuk kebutuhan impor skala kecil maupun menengah.</p>
           </div>
         </div>
         <div class="layanan-card reveal">
-          <div class="layanan-card-bg"
-            style="background-image:url('https://images.unsplash.com/photo-1578575436955-ef29da568c6d?w=800&q=80')">
+          <div class="layanan-card-bg" style="background-image:url('assets/layanan/Sea_FCL.png')">
           </div>
           <div class="layanan-card-overlay"></div>
           <div class="layanan-card-body">
-            <div class="layanan-badge"><i class="fas fa-ship"></i> Sea Freight</div>
+            <div class="layanan-badge"><i class="fas fa-ship"></i> Sea Freight FCL</div>
             <h3>Sea Freight FCL</h3>
             <p>Solusi pengiriman kontainer penuh untuk kebutuhan impor skala besar dan lebih efisien.</p>
           </div>
         </div>
         <div class="layanan-card reveal">
-          <div class="layanan-card-bg"
-            style="background-image:url('https://images.unsplash.com/photo-1464582883107-8adf2dca8a9f?w=800&q=80')">
+          <div class="layanan-card-bg" style="background-image:url('assets/layanan/Air_freight.png')">
           </div>
           <div class="layanan-card-overlay"></div>
           <div class="layanan-card-body">
@@ -1946,8 +2549,7 @@
           </div>
         </div>
         <div class="layanan-card reveal">
-          <div class="layanan-card-bg"
-            style="background-image:url('https://images.unsplash.com/photo-1607082349566-187342175e2f?w=800&q=80')">
+          <div class="layanan-card-bg" style="background-image:url('assets/layanan/Purchasing.png')">
           </div>
           <div class="layanan-card-overlay"></div>
           <div class="layanan-card-body">
@@ -1957,8 +2559,7 @@
           </div>
         </div>
         <div class="layanan-card reveal">
-          <div class="layanan-card-bg"
-            style="background-image:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80')"></div>
+          <div class="layanan-card-bg" style="background-image:url('assets/layanan/Remittance_RMB.png')"></div>
           <div class="layanan-card-overlay"></div>
           <div class="layanan-card-body">
             <div class="layanan-badge"><i class="fas fa-yen-sign"></i> Transfer RMB</div>
@@ -1967,8 +2568,7 @@
           </div>
         </div>
         <div class="layanan-card reveal">
-          <div class="layanan-card-bg"
-            style="background-image:url('https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&q=80')">
+          <div class="layanan-card-bg" style="background-image:url('assets/layanan/Warehousing_Trucking.png')">
           </div>
           <div class="layanan-card-overlay"></div>
           <div class="layanan-card-body">
@@ -1981,180 +2581,57 @@
     </div>
   </section>
 
+
+  <!-- ===================== KLIEN ===================== -->
+  <section class="klien" id="klien">
+    <div class="container">
+      <div class="section-head center reveal">
+
+        <h2 class="section-title">Dipercaya oleh <span>Berbagai Perusahaan</span></h2>
+        <p class="section-sub">Beberapa klien yang telah mempercayakan pengiriman barang mereka kepada Indotrans Cargo.
+        </p>
+      </div>
+
+      <div class="klien-strip reveal">
+        <div class="klien-track">
+          <div class="klien-logo"><img src="assets/logo/IMG_4969.png" alt="client 1">
+          </div>
+          <div class="klien-logo"><img src="assets/logo/IMG_4970.png" alt="client 2">
+          </div>
+          <div class="klien-logo"><img src="assets/logo/IMG_4971.png" alt="client 3">
+          </div>
+          <div class="klien-logo"><img src="assets/logo/IMG_4972.png" alt="client 4">
+          </div>
+          <div class="klien-logo"><img src="assets/logo/IMG_4975.png" alt="client 5">
+          </div>
+          <div class="klien-logo"><img src="assets/logo/IMG_5003.png" alt="client 6">
+          </div>
+          <div class="klien-logo"><img src="assets/logo/IMG_5004.png" alt="client 7">
+          </div>
+          <div class="klien-logo"><img src="assets/logo/IMG_5006.png" alt="client 8">
+          </div>
+          <div class="klien-logo"><img src="assets/logo/IMG_5026.png" alt="client 9">
+          </div>
+          <div class="klien-logo"><img src="assets/logo/IMG_5027.png" alt="client 10">
+          </div>
+          <div class="klien-logo"><img src="assets/logo/IMG_5029.png" alt="client 11">
+          </div>
+          <div class="klien-logo"><img src="assets/logo/IMG_5126.png" alt="client 12">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== TESTIMONI ===================== -->
   <section class="testimoni" id="testimoni">
     <div class="container">
-      <div class="section-head center reveal" style="margin-bottom:32px">
+      <div class="section-head center reveal">
         <h2 class="section-title">Testimonial Customer <span>Indotrans Cargo</span></h2>
         <p class="section-sub">Kepuasan pelanggan menjadi prioritas kami dalam setiap proses pengiriman dari China ke
           Indonesia.</p>
       </div>
-      <style>
-        .testimoni {
-          background: #fff !important;
-          overflow: hidden
-        }
 
-        .testimoni .section-title {
-          color: var(--black) !important
-        }
-
-        .testimoni .section-sub {
-          color: var(--gray-text) !important
-        }
-
-        .testimoni .section-label {
-          color: var(--orange) !important
-        }
-
-        .g-head-mini {
-          display: flex;
-          justify-content: center;
-          margin-bottom: 24px
-        }
-
-        .g-mini-pill {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          background: #f8fbff;
-          border: 1px solid var(--border);
-          border-radius: 999px;
-          padding: 10px 18px;
-          font-size: 13px;
-          font-weight: 600;
-          color: #666
-        }
-
-        .g-mini-pill .stars {
-          color: #fbbc05;
-          letter-spacing: 2px
-        }
-
-        .review-strip-wrap {
-          overflow: hidden;
-          position: relative;
-          padding: 24px 0;
-          margin: -24px 0;
-        }
-
-        .review-strip {
-          display: flex;
-          gap: 16px;
-          width: max-content;
-          animation: reviewMove 34s linear infinite
-        }
-
-        .review-strip-wrap:hover .review-strip {
-          animation-play-state: paused
-        }
-
-        .review-strip:hover .review-card {
-          opacity: 0.6
-        }
-
-        @keyframes reviewMove {
-          0% {
-            transform: translateX(0)
-          }
-
-          100% {
-            transform: translateX(-50%)
-          }
-        }
-
-        .review-card {
-          width: 280px;
-          min-height: 180px;
-          background: #fff;
-          border: 1px solid #e7ebf1;
-          border-radius: 12px;
-          padding: 18px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
-          flex-shrink: 0;
-          transition: all 0.3s ease
-        }
-
-        .review-strip .review-card:hover {
-          opacity: 1;
-          transform: scale(1.08);
-          z-index: 10;
-          box-shadow: 0 16px 40px rgba(0, 0, 0, .15)
-        }
-
-        .review-top {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          gap: 8px;
-          margin-bottom: 12px
-        }
-
-        .review-user {
-          display: flex;
-          gap: 10px;
-          align-items: flex-start
-        }
-
-        .review-avatar {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #fff;
-          font-size: 14px;
-          font-weight: 700;
-          flex-shrink: 0
-        }
-
-        .review-name {
-          font-size: 14px;
-          font-weight: 700;
-          color: #222;
-          line-height: 1.2
-        }
-
-        .review-time {
-          font-size: 11px;
-          color: #8a8a8a;
-          margin-top: 4px
-        }
-
-        .review-stars {
-          color: #fbbc05;
-          font-size: 12px;
-          letter-spacing: 1px;
-          margin-bottom: 10px
-        }
-
-        .review-text {
-          font-size: 13px;
-          line-height: 1.6;
-          color: #555;
-          display: -webkit-box;
-          -webkit-line-clamp: 4;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          min-height: 84px
-        }
-
-        .review-photos {
-          display: flex;
-          gap: 6px;
-          margin-top: 12px
-        }
-
-        .review-photo {
-          width: 56px;
-          height: 36px;
-          border-radius: 6px;
-          background-size: cover;
-          background-position: center;
-          border: 1px solid #ececec
-        }
-      </style>
       <div class="g-head-mini reveal">
         <div class="g-mini-pill"><span class="stars">★★★★★</span><span>Review pelanggan Google</span></div>
       </div>
@@ -2341,102 +2818,89 @@
     </div>
   </section>
 
-  <!-- ===================== KLIEN ===================== -->
-  <section class="klien" id="klien">
-    <div class="container">
-      <div class="section-head center reveal">
 
-        <h2 class="section-title">Dipercaya oleh <span>Berbagai Perusahaan</span></h2>
-        <p class="section-sub">Beberapa klien yang telah mempercayakan pengiriman barang mereka kepada Indotrans Cargo.
-        </p>
-      </div>
-      <style>
-        .klien {
-          background: #f4f7fb
-        }
-      </style>
-      <div class="klien-strip reveal" style="padding: 24px 0 20px 0;">
-        <div class="klien-track">
-          <div class="klien-logo" style="padding:10px;">
-            <img src="https://www.ismaya.com/themes/ismaya-cms/assets/img/brand/logo_ismaya-dark.png" alt="ISMAYA"
-              onerror="this.src='https://ui-avatars.com/api/?name=ISMAYA&background=fff&color=333&font-size=0.4'"
-              style="max-height:36px; max-width:100%; object-fit:contain;">
-          </div>
-          <div class="klien-logo" style="padding:10px;"><img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/J%26T_Express_logo.svg/1920px-J%26T_Express_logo.svg.png?_=20230913153440"
-              alt="J&amp;T"
-              onerror="this.src='https://ui-avatars.com/api/?name=J%26T&background=fff&color=333&font-size=0.4'"
-              style="max-height:36px; max-width:100%; object-fit:contain;"></div>
-          <div class="klien-logo" style="padding:10px;"><img
-              src="https://www.freepnglogos.com/uploads/shopee-logo/logo-free-download-shopee-transparent-9.png"
-              alt="SPX" onerror="this.src='https://ui-avatars.com/api/?name=SPX&background=fff&color=333&font-size=0.4'"
-              style="max-height:36px; max-width:100%; object-fit:contain;"></div>
-          <div class="klien-logo" style="padding:10px;"><img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Greenfields_%28Indonesian_Dairy_Company%29_logo.svg/1280px-Greenfields_%28Indonesian_Dairy_Company%29_logo.svg.png?_=20190217065213"
-              alt="Greenfields"
-              onerror="this.src='https://ui-avatars.com/api/?name=Greenfields&background=fff&color=333&font-size=0.4'"
-              style="max-height:36px; max-width:100%; object-fit:contain;"></div>
-          <div class="klien-logo" style="padding:10px;"><img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Bluebird_Group_primary_logo.svg/3840px-Bluebird_Group_primary_logo.svg.png"
-              alt="Bluebird"
-              onerror="this.src='https://ui-avatars.com/api/?name=Bluebird&background=fff&color=333&font-size=0.4'"
-              style="max-height:36px; max-width:100%; object-fit:contain;"></div>
-          <div class="klien-logo" style="padding:10px;"><img src="https://paxel.co/images/icon/logo-purple.svg"
-              alt="Paxel"
-              onerror="this.src='https://ui-avatars.com/api/?name=Paxel&background=fff&color=333&font-size=0.4'"
-              style="max-height:36px; max-width:100%; object-fit:contain;"></div>
-          <div class="klien-logo" style="padding:10px;"><img
-              src="https://upload.wikimedia.org/wikipedia/commons/8/86/Alfamart_logo.svg" alt="Alfamart"
-              onerror="this.src='https://ui-avatars.com/api/?name=Alfamart&background=fff&color=333&font-size=0.4'"
-              style="max-height:36px; max-width:100%; object-fit:contain;"></div>
-          <div class="klien-logo" style="padding:10px;"><img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Transmart.svg/3840px-Transmart.svg.png"
-              alt="Transmart"
-              onerror="this.src='https://ui-avatars.com/api/?name=Transmart&background=fff&color=333&font-size=0.4'"
-              style="max-height:36px; max-width:100%; object-fit:contain;"></div>
-          <div class="klien-logo" style="padding:10px;"><img
-              src="https://awsimages.detik.net.id/community/media/visual/2025/10/09/logo-bumi-resources-1759979634364_169.webp?w=1200"
-              alt="Bumi"
-              onerror="this.src='https://ui-avatars.com/api/?name=Bumi&background=fff&color=333&font-size=0.4'"
-              style="max-height:36px; max-width:100%; object-fit:contain;"></div>
-          <div class="klien-logo" style="padding:10px;"><img
-              src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Logo_Indomaret.png" alt="Indomaret"
-              onerror="this.src='https://ui-avatars.com/api/?name=Indomaret&background=fff&color=333&font-size=0.4'"
-              style="max-height:36px; max-width:100%; object-fit:contain;"></div>
-          <div class="klien-logo" style="padding:10px;"><img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Ace_Hardware_Logo.svg/960px-Ace_Hardware_Logo.svg.png?_=20250513105858"
-              alt="Ace Hardware"
-              onerror="this.src='https://ui-avatars.com/api/?name=Ace+Hardware&background=fff&color=333&font-size=0.4'"
-              style="max-height:36px; max-width:100%; object-fit:contain;"></div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ===================== PENCAPAIAN ===================== -->
+  <!-- ===================== PENCAPAIAN / CARA MUDAH ===================== -->
   <section class="pencapaian">
-    <div class="container">
-      <div class="section-head center reveal">
-        <h2 class="section-title" style="color:var(--white)">Pencapaian <span style="color:#ffa726">Indotrans
-            Cargo</span></h2>
+    <div class="container container--pencapaian">
+      <div class="cara-mudah-wrap reveal">
+        <div class="cara-mudah-title">
+          <h2>
+            Cara Mudah<br>
+            Menggunakan Jasa Import <span>Indotrans Cargo</span>
+          </h2>
+        </div>
+
+        <div class="cara-layout">
+          <!-- Dashed arc connector -->
+          <svg class="cara-arc-svg" viewBox="0 0 960 380" aria-hidden="true">
+            <path
+              d="M66,320 C74,250 110,190 166,160 C220,120 280,82 340,62 C390,48 445,44 480,44 C515,44 570,48 620,62 C680,82 740,120 794,160 C850,190 886,250 894,320"
+              fill="none" stroke="#f5b067" stroke-width="2.5" stroke-dasharray="10 8" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+
+          <!-- Desktop arc steps -->
+          <div class="cara-step s1">
+            <div class="cara-step-icon"><i class="fas fa-headset"></i></div>
+            <div class="cara-step-label">Konsultasi<br>kebutuhan</div>
+          </div>
+          <div class="cara-step s2">
+            <div class="cara-step-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+            <div class="cara-step-label">Penawaran<br>& Estimasi</div>
+          </div>
+          <div class="cara-step s3">
+            <div class="cara-step-icon"><i class="fas fa-clipboard-check"></i></div>
+            <div class="cara-step-label">Konfirmasi &<br>proses pemesanan</div>
+          </div>
+          <div class="cara-step s4">
+            <div class="cara-step-icon"><i class="fas fa-shipping-fast"></i></div>
+            <div class="cara-step-label">Pengiriman<br>dari China</div>
+          </div>
+          <div class="cara-step s5">
+            <div class="cara-step-icon"><i class="fas fa-stamp"></i></div>
+            <div class="cara-step-label">Custom<br>Clearance</div>
+          </div>
+          <div class="cara-step s6">
+            <div class="cara-step-icon"><i class="fas fa-truck"></i></div>
+            <div class="cara-step-label">Pengantaran ke<br>Alamat Anda</div>
+          </div>
+
+          <!-- Center phone mockup -->
+          <div class="cara-phone-wrap">
+            <img class="cara-phone-device" src="assets/phones-asset-2x.png" alt="Mockup WhatsApp Indotrans Cargo">
+          </div>
+
+          <!-- Mobile steps -->
+          <div class="cara-steps-mobile">
+            <div class="cara-step">
+              <div class="cara-step-icon"><i class="fas fa-headset"></i></div>
+              <div class="cara-step-label">Konsultasi<br>kebutuhan</div>
+            </div>
+            <div class="cara-step">
+              <div class="cara-step-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+              <div class="cara-step-label">Penawaran<br>& Estimasi</div>
+            </div>
+            <div class="cara-step">
+              <div class="cara-step-icon"><i class="fas fa-clipboard-check"></i></div>
+              <div class="cara-step-label">Konfirmasi &<br>proses pemesanan</div>
+            </div>
+            <div class="cara-step">
+              <div class="cara-step-icon"><i class="fas fa-shipping-fast"></i></div>
+              <div class="cara-step-label">Pengiriman<br>dari China</div>
+            </div>
+            <div class="cara-step">
+              <div class="cara-step-icon"><i class="fas fa-stamp"></i></div>
+              <div class="cara-step-label">Custom<br>Clearance</div>
+            </div>
+            <div class="cara-step">
+              <div class="cara-step-icon"><i class="fas fa-truck"></i></div>
+              <div class="cara-step-label">Pengantaran ke<br>Alamat Anda</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="pencapaian-grid">
-        <div class="pencapaian-item reveal">
-          <div class="pencapaian-num">500<span>+</span></div>
-          <div class="pencapaian-label">Total Customer</div>
-          <div class="pencapaian-sub">Importir dari seluruh Indonesia</div>
-        </div>
-        <div class="pencapaian-item reveal">
-          <div class="pencapaian-num">5<span>M+</span></div>
-          <div class="pencapaian-label">Total Kubikasi</div>
-          <div class="pencapaian-sub">Volume barang berhasil dikirim</div>
-        </div>
-        <div class="pencapaian-item reveal">
-          <div class="pencapaian-num">95<span>%</span></div>
-          <div class="pencapaian-label">Kepuasan Klien</div>
-          <div class="pencapaian-sub">Rating kepuasan pelanggan setia</div>
-        </div>
-      </div>
+
     </div>
   </section>
 
@@ -2453,54 +2917,22 @@
         <div class="faq-col">
           <div class="faq-item">
             <button class="faq-q" type="button">
-              <span>Berapa lama estimasi pengiriman dari China ke Indonesia?</span>
-              <i class="fas fa-chevron-down"></i>
-            </button>
-            <div class="faq-a">
-              <p>Sea Freight membutuhkan estimasi 14–21 hari kerja, sedangkan Air Freight 5–7 hari kerja tergantung
-                lokasi asal barang di China dan tujuan di Indonesia.</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" type="button">
-              <span>Bagaimana cara menghitung biaya pengiriman?</span>
-              <i class="fas fa-chevron-down"></i>
-            </button>
-            <div class="faq-a">
-              <p>Biaya pengiriman dihitung berdasarkan berat aktual atau volumetrik, jenis layanan, dan tujuan akhir
-                pengiriman.</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" type="button">
               <span>Bisakah saya melacak status pengiriman barang saya?</span>
               <i class="fas fa-chevron-down"></i>
             </button>
             <div class="faq-a">
-              <p>Ya, status pengiriman dapat dipantau melalui tim customer support kami secara berkala.</p>
+              <p>Ya, status pengiriman dapat dipantau melalui tim customer support kami yang akan memberikan update
+                secara berkala hingga barang tiba di tujuan.</p>
             </div>
           </div>
-        </div>
-
-        <div class="faq-col">
           <div class="faq-item">
             <button class="faq-q" type="button">
               <span>Apakah ada minimum order untuk jasa impor?</span>
               <i class="fas fa-chevron-down"></i>
             </button>
             <div class="faq-a">
-              <p>Tidak ada minimum order selama barang yang dikirim legal, aman, dan sesuai ketentuan pengiriman yang
-                berlaku.</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" type="button">
-              <span>Apakah Indotrans Cargo mengurus dokumen bea cukai?</span>
-              <i class="fas fa-chevron-down"></i>
-            </button>
-            <div class="faq-a">
-              <p>Ya, kami membantu proses custom clearance serta memastikan kelengkapan dokumen impor sesuai kebutuhan.
-              </p>
+              <p>Ya, minimum order untuk pengiriman adalah 0,1 CBM, sehingga tetap fleksibel untuk kebutuhan impor skala
+                kecil maupun besar.</p>
             </div>
           </div>
           <div class="faq-item">
@@ -2509,7 +2941,40 @@
               <i class="fas fa-chevron-down"></i>
             </button>
             <div class="faq-a">
-              <p>Ya, kami juga menyediakan layanan jasa titip beli dan sourcing product dari supplier China terpercaya.
+              <p>Ya, kami menyediakan layanan jasa beli barang dari marketplace China, mulai dari pencarian produk,
+                komunikasi dengan supplier, hingga barang siap dikirim ke Indonesia.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-col">
+          <div class="faq-item">
+            <button class="faq-q" type="button">
+              <span>Metode pembayaran apa yang bisa saya gunakan?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-a">
+              <p>Kami menerima pembayaran melalui rekening bank resmi PT Indotrans Jaya Nusantara.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button">
+              <span>Apakah barang bisa dikirim ke alamat saya?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-a">
+              <p>Bisa, kami menyediakan layanan pengiriman hingga ke alamat tujuan Anda, baik ke gudang maupun lokasi
+                bisnis sesuai kebutuhan.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button">
+              <span>Apakah Indotrans Cargo dapat membantu komunikasi dengan seller di China?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-a">
+              <p>Ya, tim kami dapat membantu komunikasi dengan supplier menggunakan Bahasa Mandarin, sehingga proses
+                negosiasi dan pembelian barang menjadi lebih mudah dan lancar.
               </p>
             </div>
           </div>
@@ -2519,19 +2984,15 @@
   </section>
 
   <!-- ===================== CTA BANNER ===================== -->
-  <section style="background:linear-gradient(135deg,#f57c00,#e65100);padding:70px 0">
-    <div class="container" style="text-align:center">
-      <div class="reveal">
-        <h2
-          style="font-family:Outfit,sans-serif;font-size:clamp(24px,3.5vw,38px);font-weight:800;color:#fff;margin-bottom:14px">
-          Siap Mulai Impor dari China?</h2>
-        <p
-          style="font-size:16px;color:rgba(255,255,255,0.85);margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto">
-          Konsultasikan kebutuhan impor Anda sekarang. Tim kami siap membantu 24/7.</p>
+  <section class="cta-banner">
+    <div class="container">
+      <div class="reveal padding-cta">
+        <h2 class="cta-banner-title">Siap Mulai Impor dari China?</h2>
+        <p class="cta-banner-text">Tim kami siap membantu Anda dari proses pembelian hingga pengiriman barang ke
+          Indonesia.</p>
         <a href="https://wa.me/628XXXXXXXXX?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
-          target="_blank"
-          style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#e65100;padding:16px 36px;border-radius:30px;font-weight:800;font-size:16px;text-decoration:none;box-shadow:0 8px 30px rgba(0,0,0,0.15);transition:all 0.3s">
-          <i class="fab fa-whatsapp" style="font-size:20px;color:#25D366"></i> Konsultasi Impor Sekarang
+          target="_blank" class="cta-banner-link">
+          Konsultasi Impor Sekarang
         </a>
       </div>
     </div>
@@ -2543,13 +3004,9 @@
       <div class="footer-main">
         <div class="footer-brand">
           <div class="brand-wrap">
-            <div class="icon"><i class="fas fa-ship"></i></div>
-            <div>
-              <div class="name">Indotrans Cargo</div>
-              <div class="tagline">Forwarder China–Indonesia</div>
-            </div>
+            <div class="icon footer-logo-bg"><img src="assets/logo-indontrans-1.png" alt="Indotrans Cargo"></div>
           </div>
-          <p>Mitra terpercaya importir Indonesia selama 5+ tahun. Kami mengurus seluruh proses impor dari China hingga
+          <p>Mitra terpercaya importir Indonesia selama 7+ tahun. Kami mengurus seluruh proses impor dari China hingga
             barang tiba aman di tangan Anda.</p>
           <div class="footer-social">
             <a href="#"><i class="fab fa-instagram"></i></a>
@@ -2597,7 +3054,7 @@
 
   <!-- ===================== WA FLOAT BUTTON ===================== -->
   <div class="wa-float">
-    <span class="wa-label">Konsultasi Impor Gratis</span>
+    <span class="wa-label">Konsultasi Gratis Sekarang!</span>
     <a class="wa-btn"
       href="https://wa.me/628XXXXXXXXX?text=Halo+Admin%2C+Saya+ingin+info+tentang+Pengiriman+Barang+dari+China+Indotrans+Cargo"
       target="_blank">
@@ -2655,89 +3112,61 @@
       });
     });
 
-    // Counter animation
-    function animateCounter(el, target, suffix = '') {
+    // Hero stat counter animation
+    function animateStatNumber(el, target, suffix) {
       let current = 0;
       const duration = 2000;
-      const step = target / (duration / 16);
+      const steps = duration / 16;
+      const increment = target / steps;
       const timer = setInterval(() => {
-        current = Math.min(current + step, target);
-        el.textContent = Math.floor(current).toLocaleString() + suffix;
-        if (current >= target) clearInterval(timer);
+        current = Math.min(current + increment, target);
+        el.textContent = Math.floor(current) + suffix;
+        if (current >= target) {
+          el.textContent = target + suffix;
+          clearInterval(timer);
+        }
       }, 16);
     }
 
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const nums = e.target.querySelectorAll('.pencapaian-num');
-          nums[0]?.querySelector('span') && null;
-          // simple text counter
-          e.target.querySelectorAll('.pencapaian-item').forEach(item => {
-            const numEl = item.querySelector('.pencapaian-num');
-            const text = numEl.textContent.trim();
-            if (text.includes('500')) { numEl.innerHTML = ''; animateCounterEl(numEl, 500, '+'); }
-            if (text.includes('5M')) { numEl.innerHTML = ''; animateCounterElM(numEl); }
-            if (text.includes('95')) { numEl.innerHTML = ''; animateCounterEl(numEl, 95, '<span>%</span>'); }
+    const heroStatObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.stat-number').forEach(numEl => {
+            const target = parseInt(numEl.dataset.target, 10);
+            const suffix = numEl.dataset.suffix || '';
+            if (target) animateStatNumber(numEl, target, suffix);
           });
-          counterObserver.unobserve(e.target);
+          heroStatObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.3 });
 
-    function animateCounterEl(el, target, suffix) {
-      let c = 0; const step = target / 80;
-      const t = setInterval(() => {
-        c = Math.min(c + step, target);
-        el.innerHTML = Math.floor(c) + suffix;
-        if (c >= target) clearInterval(t);
-      }, 20);
+    const heroCards = document.querySelector('.stats-cards');
+    if (heroCards) heroStatObserver.observe(heroCards);
+
+    // Mobile Why Us slider dots
+    const whyGrid = document.querySelector('.why-grid-v4');
+    const whyHintDots = document.querySelectorAll('#whySwipeHint span');
+    if (whyGrid && whyHintDots.length) {
+      const getCardWidth = () => (whyGrid.querySelector('.why-card-v4')?.offsetWidth || 0) + 14; // 14 = gap
+
+      const updateWhyDots = () => {
+        if (window.innerWidth > 768) return;
+        const index = Math.round(whyGrid.scrollLeft / getCardWidth());
+        whyHintDots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+      };
+
+      // Dot click → scroll to card
+      whyHintDots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          whyGrid.scrollTo({ left: i * getCardWidth(), behavior: 'smooth' });
+        });
+      });
+
+      whyGrid.addEventListener('scroll', updateWhyDots, { passive: true });
+      window.addEventListener('resize', updateWhyDots);
+      updateWhyDots();
     }
-    function animateCounterElM(el) {
-      let c = 0; const step = 5 / 80;
-      const t = setInterval(() => {
-        c = Math.min(c + step, 5);
-        el.innerHTML = c.toFixed(1).replace('.0', '') + '<span>M+</span>';
-        if (c >= 5) clearInterval(t);
-      }, 20);
-    }
-
-    const pencapaianSection = document.querySelector('.pencapaian-grid');
-    if (pencapaianSection) counterObserver.observe(pencapaianSection.parentElement);
-
-    // Hero Slider
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.hero-slide');
-    const dots = document.querySelectorAll('.hero-dots .dot');
-    let slideInterval;
-
-    function initSlider() {
-      if (!slides.length) return;
-      slideInterval = setInterval(() => changeSlide(1), 6000);
-    }
-
-    window.changeSlide = function (direction) {
-      let nextSlide = currentSlide + direction;
-      if (nextSlide >= slides.length) nextSlide = 0;
-      if (nextSlide < 0) nextSlide = slides.length - 1;
-      goToSlide(nextSlide);
-    }
-
-    window.goToSlide = function (index) {
-      if (!slides.length || index === currentSlide) return;
-      slides[currentSlide].classList.remove('active');
-      if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
-
-      currentSlide = index;
-
-      slides[currentSlide].classList.add('active');
-      if (dots[currentSlide]) dots[currentSlide].classList.add('active');
-
-      clearInterval(slideInterval);
-      slideInterval = setInterval(() => changeSlide(1), 6000);
-    }
-
-    initSlider();
   </script>
 </body>
 
