@@ -1233,7 +1233,7 @@
       .cara-steps-mobile {
         order: 1;
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 30px 10px;
         width: 100%;
         padding: 0 4px 24px;
@@ -1349,7 +1349,16 @@
     /* Hide mobile connector on desktop & tablet */
     @media (min-width: 481px) {
       .cara-mobile-connector {
-        display: none;
+        display: block !important;
+        position: absolute;
+        top: -6px;
+        left: -8px;
+        width: calc(100% - 7px);
+        height: calc(100% - 177px);
+        z-index: 1;
+        pointer-events: none;
+        overflow: visible;
+        opacity: 0.5;
       }
     }
 
@@ -1773,7 +1782,7 @@
 
     .why-us-v4 .why-card-v4 {
       position: relative;
-      min-height: 255px;
+      min-height: 275px;
       border-radius: 28px;
       overflow: hidden;
       box-shadow: 0 16px 40px rgba(25, 46, 94, .12);
