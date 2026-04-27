@@ -285,23 +285,7 @@
       /* Memastikan blur tidak tumpah keluar */
     }
 
-    .hero-bg::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      /* Tambahkan z-index agar layer blur ini jelas berada di atas background image */
 
-      /* Nilai blur yang diinginkan */
-      backdrop-filter: blur(17px);
-      -webkit-backdrop-filter: blur(17px);
-
-      /* Masking: Gunakan format rgba() karena lebih aman dan didukung konsisten oleh semua browser dibandingkan 'black' dan 'transparent' */
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.1) 100%);
-      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.1) 100%);
-
-      pointer-events: none;
-    }
 
 
 
