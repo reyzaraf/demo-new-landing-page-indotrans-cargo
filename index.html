@@ -1172,6 +1172,10 @@
       filter: drop-shadow(0 14px 30px rgba(12, 24, 46, .20));
     }
 
+    .cara-phone-device-mobile {
+      display: none;
+    }
+
     /* Product cards floating over the phone bottom */
     .cara-float-assets {
       position: absolute;
@@ -1342,7 +1346,16 @@
       }
 
       .cara-phone-device {
-        width: auto;
+        /* width: auto; */
+        display: none;
+      }
+
+      .cara-phone-device-mobile {
+        width: clamp(620px, 98vw, 1000px);
+        max-width: 90vh !important;
+        height: auto;
+        display: block;
+        filter: drop-shadow(0 14px 30px rgba(12, 24, 46, .20));
       }
     }
 
@@ -1360,6 +1373,8 @@
         overflow: visible;
         opacity: 0.5;
       }
+
+
     }
 
     @media (min-width: 1024px) {
@@ -3101,7 +3116,9 @@
 
           <!-- Center phone mockup -->
           <div class="cara-phone-wrap">
-            <img class="cara-phone-device" src="assets/phones-asset-2x.png" alt="Mockup WhatsApp Indotrans Cargo">
+            <img class="cara-phone-device" src="assets/phones-asset2.png" alt="Mockup WhatsApp Indotrans Cargo">
+            <img class="cara-phone-device-mobile" src="assets/phones-asset-2x.png"
+              alt="Mockup WhatsApp Indotrans Cargo">
           </div>
 
           <!-- Mobile steps -->
@@ -3252,7 +3269,7 @@
           <div class="brand-wrap">
             <div class="icon"><img src="assets/logo-indontrans-2.png" alt="Indotrans Cargo"></div>
           </div>
-          <p>Mitra terpercaya importir Indonesia selama 10+ tahun. Kami mengurus seluruh proses impor dari China hingga
+          <p>Mitra terpercaya importir Indonesia selama 7+ tahun. Kami mengurus seluruh proses impor dari China hingga
             barang tiba aman di tangan Anda.</p>
           <div class="footer-social">
             <a href="https://www.instagram.com/indotranscargo?igsh=MXV0aWJiMTV1dGdxZA=="><i
